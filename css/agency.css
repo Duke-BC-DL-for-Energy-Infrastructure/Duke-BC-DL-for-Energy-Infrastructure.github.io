@@ -14,19 +14,19 @@ p {
 }
 
 a {
-  color: #229928;
+  color: #2a2299;
 }
 
 a:hover {
-  color: #2faa1f;
+  color: #211faa;
 }
 
 .text-primary {
-  color: #2a8018 !important;
+  color: #1f1880 !important;
 }
 
 .text-green {
-  color: #298b0b;
+  color: #1e0b8b;
 }
 
 .text-blue {
@@ -119,19 +119,19 @@ img::-moz-selection {
 }
 
 .btn-primary {
-  background-color: #2f7713;
-  border-color: #387514;
+  background-color: #1d1377;
+  border-color: #1d1377;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #0a5f18 !important;
-  border-color: #155708 !important;
+  background-color: #170a5f !important;
+  border-color: #140857 !important;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   color: white;
 }
 
 .btn-primary:active, .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(69, 243, 54, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem rgba(54, 67, 243, 0.5) !important;
 }
 
 #mainNav {
@@ -145,18 +145,18 @@ img::-moz-selection {
   text-transform: uppercase;
   color: white;
   border: 0;
-  background-color: #1b8b46;
+  background-color: #2c1b8b;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 #mainNav .navbar-brand {
-  color: #228827;
+  color: #242288;
   font-family: Trebuchet MS, sans-serif, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 /*Kaushan Script', -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto, 'Helvetica Neue',  */
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #289e3c;
+  color: #34289e;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -169,7 +169,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #2d852d;
+  color: #332d85;
 }
 
 @media (min-width: 992px) {
@@ -641,7 +641,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-  border-color: #1a913e;
+  border-color: #1a1c91;
   box-shadow: none;
 }
 
@@ -707,5 +707,5 @@ ul.social-buttons li a {
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #299e29;
+  background-color: #2b299e;
 }
