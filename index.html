@@ -214,137 +214,173 @@
           <hr class="divider light my-4" />
           <div class="row">
             <div class="col-md-12 my-auto">
-              <p class="text-muted" style="text-align: justify;">Our real-world overhead imagery comes from the NAIP Power Plant Aerial Imagery Dataset, a collection of 4,454 overhead images of power plants across the United States. 
-                Images of wind turbines predominantly come from California, the Midwest, and around northern Texas.
+              <p class="text-muted" style="text-align: justify;">
+                Below you can see an outline of the steps required to run these experiments. We'll take about each of them in this section.
               </p>
             </div>
-            <div class="col-md-6 my-auto">
-                        <img src="img/data/data_map.png" class="img-responsive" alt="" style="width:100%">
-                <caption><i>Figure: Each red dot represents a single wind turbine image from the NAIP Dataset.</i></caption>
-            </div>
-            <div class="col-md-6 my-auto">
-                        <img src="img/data/histogram.png" class="img-responsive" alt="" style="width:100%">
-                <caption><i>Note: Heights represent number of images, not number of wind turbines.</i></caption>
+            <div class="col-md-12 my-auto">
+              <img src="img/methodology/Overview of Steps.png" class="img-responsive" alt=""style="width:100%">
             </div>
           </div>
-      
           <hr class="divider light my-4" />
+          <h2 class="service-heading text-left">Collecting Real Imagery</h2>
           <div class="row">
-            <div class="col-md-8 my-auto">
-              <h3 class="service-heading">Diversity Between States</h3>
-              <img src="img/data/4_pics.PNG" class="img-responsive" alt="" style="width:100%">
-              <caption><i>Figure: Images are taken from National Agricultural Imagery Program (NAIP) Power Plant Aerial Imagery Dataset.</i></caption>
+            <div class="col-md-12 my-auto">
+              <p class="text-muted" style="text-align: justify;"> For our overhead imagery of wind turbines, we chose to sample them from 
+                <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">NAIP</a>.
+                This imagery covers a large part of the US and is very high resolution, making it great for our experiments. 
+                We collected imagery in three different regions that we called Northwest, Northeast, and Eastern Midwest.
+              </p>
             </div>
             <div class="col-md-4 my-auto">
-              <p class="text-muted" style="text-align: justify;"> 
-                From these images, we can notice significant variability in features like land types and even wind turbine 
-                shapes between different states. For example, imagery from California is almost exclusively in 
-                desert regions. California has a range of sizes of wind turbines including some that are small 
-                and densely-clustered. On the other end of the spectrum, states like Maine have mostly large 
-                wind turbines in regions with lots of vegetation. Images from the same state tend to be 
-                relatively self-similar.
-                <br><br>
-                By including variation in features like geography, wind turbine size, and shadow size in the training dataset,
-                the model can generalize more broadly. However, it can be very difficult for the model to learn these novel
-                features if they are absent from the training data.
-              </p>
+              <h5 class="service-heading">Northwest</h5>
+              <dl>
+                <dd class="text-muted">- Overall hue is brown</dd>
+                <dd class="text-muted">- Mostly desert and grassland</dd>
+              </dl>
+            </div>
+            <div class="col-md-4 my-auto">
+              <h5 class="service-heading">Northeast</h5>
+              <dl>
+                <dd class="text-muted">- Hue is very green</dd>
+                <dd class="text-muted">- Mostly forests</dd>
+              </dl>
+            </div>
+            <div class="col-md-4 my-auto">
+              <h5 class="service-heading">Eastern Midwest</h5>
+              <dl>
+                <dd class="text-muted">- Hue is mostly green, some brown</dd>
+                <dd class="text-muted">- Primarily farmland</dd>
+              </dl>
+            </div>
+            <div class="col-md-12 my-auto">
+              <img src="img/methodology/Collecting Overhead Imagery.png" class="img-responsive" alt="" style="width:100%">
+              <caption><i>Figure: Each dot represents a single image that we collected.</i></caption>
             </div>
           </div>
+          <br>
+          <br>
+          <div class="row">
+            <p class="text-muted" style="text-align: justify;"> Below we can see the regions splits by which states they include,
+              as well as the number of images we collected for each region.
+            </p>
+            <img src="img/methodology/Where Our Data is From.png" class="img-responsive" alt="" style="width:90%">
+          </div>
+        </div>
+      </div>
 
       
-          <hr class="divider light my-4" />
-          <div class="row text-center">
-            <div class="col-md-6">
-              <h4 class="service-heading">Annotating</h4>
-                <p class="text-muted" style="text-align: left;">Ground truth labels were created using the image labeling GUI <a
-                  href="https://github.com/astr93/pyimannotate">pyimannotate</a>. 
-                  Bounding boxes were hand-drawn around the wind turbines in each image, and the labels
-                  were stored in .txt files to be accessed during training and testing.</p>
-                  <img src="img/data/labeling.png" class="img-responsive" alt="" style="width:90%">
-              
-            </div>
-            <div class="col-md-6">
-              <h4 class="service-heading">Preprocessing</h4>
-                <p class="text-muted" style="text-align: left;">The size of the raw overhead images was very large and slowed training speeds. 
-                  To increase efficiency, we divided the 1114x1114 pixel images into four 608x608 pixel patches that could then be fed into the model. 
-                  Ground truth labels were then adjusted to account for resizing.</p>
-                <img src="img/data/preprocessing.png" class="img-responsive" alt="" style="width:90%">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 my-auto">
-          <h3 class="service-heading">CityEngine</h3>
-          <p class="text-muted" style="text-align: left;">To create the synthetic data we used the program 
-            CityEngine, which can be used to generate landscapes and structures in a 3D environment. One reason 
-            why we picked CityEngine is that it uses a hyper-realistic graphics engine called the Unreal Engine.
-            The program also allows the integration of python scripts along with the ability to take and save images with 
-            cameras, which is useful for automating the collection of our synthetic data.
-          </p>
-        </div>
-        <div class="col-md-6 my-auto">
-          <img src="img/creating_synthetic_data/city_engine_gui.jpg" class="img-responsive" alt="" style="width:100%">
-          <caption><i>Figure: CityEngine User Interface with a generated city landscape</i></caption>
-        </div>
-      </div>
-
       <hr class="divider light my-4" />
       <div class="row">
         <div class="col-md-12 my-auto">
-          <h3 class="service-heading">Workflow</h3>
-          <p class="text-muted" style="text-align: left;">To create the synthetic imagery, we first compiled
-          a list of overhead images that did not contain wind turbines. These images were for the background on which to generate wind turbine models. We also collected 3D wind turbine
-          models from online that we would like to use for the synthetic data. </p>
-
-          <p class="text-muted" style="text-align: left;">We then used a python script and CityEngine files to randomly select the images and generate the 3D wind turbine models in random locations on top of the images. 
-          The script then moves the camera to the four quadrants of the images, and in each location, it captures and saves a photo. This process is then repeated
-          with the wind turbine models colored in as black and the background colored as white. These black and white images tell us where the models are placed 
-          and can be used to create ground truth labels.</p>
+          <h2 class="service-heading">Creating Synthetic Imagery</h2>
+          <p class="text-muted" style="text-align: left;"> To create synthetic imagery, we use a software called CityEngine. As inputs to 
+            this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images 
+            as seen on the right. First, a randomly chosen background image is placed, and then the turbine model is generated randomly
+            on top of the background image to create the 3D scene shown in the middle of the figure below. Next, a simulated camera is moved 
+            to the overhead / bird's eye view, and then we can save and export this overhead synthetic image.
+          </p>
+        </div>
+        <div class="col-md-12 my-auto">
+          <img src="img/methodology/Synthetic Generation Process.png" class="img-responsive" alt="" style="width:100%">
         </div>
       </div>
 
+      <br><br>
       <div class="row">
-        <div class="col-md-12 my-auto">
-          <img src="img/creating_synthetic_data/synthetic_imagery_creation.png" class="img-responsive" alt="" style="width:100%" height="100%">
+        <div class="col-md-4 my-auto">
+          <p class="text-muted" style="text-align: justify;"> We can repeat this process but remove the background images, and color
+            in the turbine models as black to retrieve information on where the turbine models are located. These black-and-white images can
+            then be used to generate formatted labels that we can use with our object detection model.
+          </p>
+        </div>
+        <div class="col-md-8 my-auto">
+          <img src="img/methodology/Generating Annotations.png" class="img-responsive" alt="" style="width:100%">
+          <caption><i>Figure: Side-by-side of an RGB image with its corresponding black-and-white label.</i></caption>
         </div>
       </div>
-
+      <br><br>
       <div class="row">
         <div class="col-md-12 my-auto">
-          <img src="img/creating_synthetic_data/creating_annos.png" class="img-responsive" alt="" style="width:100%" height="100%">
-          <caption><i>Figure: Flowchart of CityEngine Workflow</i></caption>
+          <p class="text-muted" style="text-align: justify;"> These synthetic images are simple, cheap, and fast to create. All we need are
+            background images, and the rest of the process of generating the images and the labels is done automatically, making this a great
+            alternative when we don't have enough real imagery or when it is time-consuming or expensive to collect. Below are some example
+            synthetic images with a variety of background images.
+          </p>
+        </div>
+        <div class="col-md-12 my-auto">
+          <img src="img/methodology/Example Synthetic Images.png" class="img-responsive" alt="" style="width:100%">
+          <caption class="text-muted"><i>Figure: Example synthetic images.</i></caption>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-md-12 my-auto">
+          <h3 class="service-heading">Synthetic Imagery Design Considerations</h3>
+          <p class="text-muted" style="text-align: left;"> The design of the synthetic imagery is important because the closer the
+            synthetic imagery is to the real imagery, the more the synthetic imagery will improve our performance when adding it to our 
+            training set.
+          </p>
         </div>
       </div>
       <br>
-
       <div class="row">
         <div class="col-md-6 my-auto">
-          <p class="text-muted" style="text-align: justify;">After this process, we have a set of synthetic images, and for each of these images, 
-            we have a corresponding file that locates the position of the wind turbine models within the image.</p>
+          <img src="img/methodology/Turbine Size Distribution.png" class="img-responsive" alt="" style="width:100%">
+          <caption class="text-muted"><i>Figure: Bounding box size distribution of turbines in real imagery.</i></caption>
         </div>
         <div class="col-md-6 my-auto">
-          <img src="img/creating_synthetic_data/comparing_rgb_with_annos.png" class="img-responsive" alt="" style="width:100%">
-          <caption><i>Figure: Side-by-side of an RGB image with its corresponding annotation.</i></caption>
+          <h5 class="service-heading">Size of the Synthetic Turbines</h5>
+          <p class="text-muted" style="text-align: left;"> The first consideration we have to make is what size to make the
+            synthetic turbines. For this issue, we chose to model the size distribution of the synthetic turbines after the size
+            distribution of the real turbines. To do this, we created a histogram of the size of the turbines in our real imagery (see left),
+            and modeled this in our synthetic imagery with multiple bins of uniform distributions.
+          </p>
         </div>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 my-auto">
+          <h5 class="service-heading">Angle of the Camera</h5>
+          <p class="text-muted" style="text-align: left;"> The next decision we had to make about the synthetic imagery design was
+            the angle of the simulated camera when we are capturing photos of the synthetic 3D scene. We noticed that in the real imagery,
+            some of the images were captured at an angle. This can be seen in the real images to the right, where we can see the pole of 
+            the turbine due to the angle of the camera. We tried to incorporate this into our synthetic imagery, where we would pick
+            to either take the image from directly above or to have a randomly chosen camera angle between 60 and 90 degrees.
+          </p>
+        </div>
+        <div class="col-md-6 my-auto">
+          <img src="img/methodology/Angle of Camera 2.png" class="img-responsive" alt="" style="width:100%">
+          <caption class="text-muted"><i>Figure: Bounding box size distribution of turbines in real imagery.</i></caption>
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="service-heading">Testing the Synthetic Imagery</h3>
+        <div class="col-md-12 my-auto">
+          <p class="text-muted" style="text-align: left;"> Now that we have some synthetic imagery, we want to test whether it can
+            help the performance of our object detection model when we deploying it on a new geography or when we lack training data. 
+            To test this, we can train our model on two different training datasets. One contains purely real imagery, while the second
+            contains the same real imagery, but we add in a number of synthetic images. We then test the performance of both models and
+            compare the performances.
+          </p>
 
+        </div>
+        <div class="col-md-12 my-auto">
+          <img src="img/methodology/Testing Synthetic Imagery.png" class="img-responsive" alt="" style="width:80%"> <br><br>
+          <p class="text-muted" style="text-align: left;"> Next, we will go into the process of constructing these two datasets and then discuss the 
+            variety of experiments that we completed with the synthetic imagery.
+          </p>
+        </div>
+      </div>
       <hr class="divider light my-4" />
 
+      <hr class="divider light my-4" />
       <div class="row">
-        <div class="col-md-6 my-auto">
-          <img src="img/creating_synthetic_data/bbox.png" class="img-responsive" alt="" style="width:100%">
-          <caption><i>Figure: Creating bounding boxes from annotations</i></caption>
-        </div>
-        <div class="col-md-6 my-auto">
-          <h3 class="service-heading">Creating Labels</h3>
-          <p class="text-muted" style="text-align: justify;">The last step is to then use the black and white annotations to create ground truth labels. 
-            This is done by finding groups of black pixels and then recording the dimensions and positions of these pixel groupings. This can be visualized as
-            drawing boxes around each of these models. This is done for each image, giving us a label corresponding with each image, where the label contains the information
-            about every model within that image.</p>
+        <div class="col-md-12 my-auto">
+          <h2 class="service-heading">Constructing the Datasets</h2>
         </div>
       </div>
+
     </div>
   </section>
 
