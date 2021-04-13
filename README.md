@@ -1,12 +1,15 @@
+# Duke Bass Connections Deep Learning for Energy Infrastructure Website
+This is our repo that contains our website as a part of our final deliverables. It describes the motivation, experiments, and results of this project throughout 2020-2021.
+
+## Contributing to this
+Firstly, make sure to work on your own section so that we don't get any merge conflicts. You'll want to clone this repo onto your local computer, edit the index.html file, and then push to this repo. Make sure to pull before you start working so that you are always working on the most recent version.
+
+## Theme
+This website was created with a Bootstrap theme called Agency, which you can find more info about down below.
+
 # [Start Bootstrap - Agency](https://startbootstrap.com/template-overviews/agency/)
 
 [Agency](https://startbootstrap.com/template-overviews/agency/) is a one page agency portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
-
-## Preview
-
-[![Agency Preview](https://startbootstrap.com/assets/img/screenshots/themes/agency.png)](https://blackrockdigital.github.io/startbootstrap-agency/)
-
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-agency/)**
 
 ## Status
 
