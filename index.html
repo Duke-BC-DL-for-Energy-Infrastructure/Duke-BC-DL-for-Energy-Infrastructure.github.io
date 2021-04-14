@@ -342,6 +342,24 @@
           <caption class="text-muted"><i>Figure: Bounding box size distribution of turbines in real imagery.</i></caption>
         </div>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 my-auto">
+          <img src="img/methodology/Nearby Background Image.png" class="img-responsive" alt="" style="width:100%">
+          <caption class="text-muted"><i>Figure: Test image and nearby collected background image.</i></caption>
+        </div>
+        <div class="col-md-6 my-auto">
+          <h5 class="service-heading">Which Background Images to Use</h5>
+          <p class="text-muted" style="text-align: left;"> We also have to choose which background images to have placed under our
+            synthetic data. We chose to collect background imagery close to the real images in our testing set so that our synthetic
+            imagery would look as close as possible to the target data. We would not be able to do this if we were deploying the model, 
+            since we wouldn't know our testing data, but we would be able to collect imagery from around the region as our background images.
+            However, using the background images close to our testing locations for these experiments allows us to search for an upper bound
+            on the performance increase that the synthetic data can provide, and can also tell us how important the background images are when 
+            we are creating our synthetic images.
+          </p>
+        </div>
+      </div>
       <div class="row">
         <h3 class="service-heading">Testing the Synthetic Imagery</h3>
         <div class="col-md-12 my-auto">
