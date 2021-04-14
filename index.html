@@ -201,7 +201,7 @@
           <div class="row">
             <div class="col-md-12 my-auto">
               <p class="text-muted" style="text-align: justify;">
-                Below you can see an outline of the steps required to run these experiments. We'll take about each of them in this section.
+                Below you can see an outline of the steps required to run these experiments. We'll talk about each of them in this section.
               </p>
             </div>
             <div class="col-md-12 my-auto">
@@ -215,13 +215,14 @@
               <p class="text-muted" style="text-align: justify;"> For our overhead imagery of wind turbines, we chose to sample them from 
                 <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">NAIP</a>.
                 This imagery covers a large part of the US and is very high resolution, making it great for our experiments. 
-                We collected imagery in three different regions that we called Northwest, Northeast, and Eastern Midwest.
+                We collected imagery in three different regions that we called Northwest, Northeast, and Eastern Midwest. We noticed
+                differences in the visual appearance of the background in the images collected in these three regions:
               </p>
             </div>
             <div class="col-md-4 my-auto">
               <h5 class="service-heading">Northwest</h5>
               <dl>
-                <dd class="text-muted">- Overall hue is brown</dd>
+                <dd class="text-muted">- Hue is mostly brown</dd>
                 <dd class="text-muted">- Mostly desert and grassland</dd>
               </dl>
             </div>
@@ -433,7 +434,7 @@
             </div>
             
             <div class="col-md-6 my-auto">
-             <p> To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
+             <p class="text-muted" style="text-align: justify;"> To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
             </div>
           </div>
           
@@ -612,7 +613,7 @@
           <div class="row">
             <div class="col-md-1 my-auto"></div>
             <div class="col-md-10 my-auto">
-              <p style="text-align: justify;">The results show that adding the curated synthetic imagery improves the performance of
+              <p class="text-muted" style="text-align: justify;">The results show that adding the curated synthetic imagery improves the performance of
               our object detection model in all cases. This is especially the case when we have a cross domain setting (testing on an unseen region).
               The performance increase is more limited in the within domain setting, where there the model is testing on a previously seen region. We
               also explored the various ratios of real to synthetic imagery and found an optimal ratio. This method of synthetic generation is cheap 
@@ -621,6 +622,12 @@
               locations of energy infrastructure could fill in the information gaps that energy access planners need when making decisions about electrification.</p>
             </div>
             <div class="col-md-1 my-auto"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <img src="img/key_takeaways/Overall Results.png" class="img-responsive" alt="" style="width:50%">
+            </div>
           </div>
         </div>
       </div>
@@ -637,15 +644,22 @@
           <hr class="divider light my-4" />
           <div class="row">
             <div class="col-md-12 my-auto">
-              <ol style="text-align: justify;">
-                <li>Develop a <strong>larger variety of synthetic images</strong> for training. This includes varying the lighting of the CityEngine scenes along with including different variations of models.
-                  We would like to include a wire structured wind turbine in the synthetic data to improve performance on those types of turbines
+              <ol class="text-muted" style="text-align: justify;">
+                <li>
+                  Apply these techniques to <strong>detect other types of energy infrastructure</strong>. Because high voltage transmission towers are 
+                  similar structure to wind turbines, we can easily adapt our synthetic image generation process for transmission towers. We could then
+                  test this synthetic imagery in the same manner as what we performed for the synthetic imagery of wind turbines, and see if this method
+                  extends to this other energy infrastructure.
                 </li><br>
-                <li>Improve the <strong>quality of our synthetic images</strong>. This would involve purchasing high-quality models from online or designing models ourselves to emulate the 
-                  real wind turbines that we observe in the overhead imagery. This is especially important for the smaller turbines, since performace improved very slightly after adding our synthetic data that included small turbines.
-                </a></li><br>
-                <li><strong>Apply this model on a large scale</strong>. We would train the model and then apply it to Google Earth Engine imagery for the United States to locate wind turbines throughout the U.S.</li><br>
-                <li>Apply these techniques to <strong>detect other types of energy infrastructure</strong>. This will likely include coal plants and transmission lines</li>
+                <li>
+                  Try few shot learning, where we use <strong>small amounts of real images and large amounts of synthetic data</strong> to adapt our object detection
+                  model to any region that we choose.
+                </li><br>
+                <li>
+                  We would also like to explore <strong>more methods of generating synthetic data</strong>. One method in particular would be using
+                  generative adversarial networks (GANs) to generate synthetic imagery with deep learning. This could look more realistic
+                  than the current synthetic imagery, since the synthetic image generation process would learn from the real imagery we have.
+                </li>
               </ol>
             </div>
           </div>
