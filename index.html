@@ -380,11 +380,91 @@
       </div>
       <hr class="divider light my-4" />
 
+      <div class="row">
+        <div class="col-md-12 my-auto">
+        <h2 class="service-heading">Constructing the Datasets</h2>
+          
+        <div class="row">
+          <div class="col-md-6 my-auto">
+            <h5 class="service-heading">Clustering and Stratified Sampling</h5>
+              <p class="text-muted" style="text-align: justify;"> Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets are representative of a geographic region. To ensure our datasets are representative, we k-means clustering within each region and then stratified sample from each cluster to construct our 100:100 (train to test ratio) constrained baseline datasets to increase homogeneity within a region. </p>
+          </div>
+          <div class="col-md-6 my-auto">
+            <img src="img/methodology/Clustering and Stratified Sampling.png" class="img-responsive" alt="" style="width:100%">
+          </div>
+        </div>
+          
+          <h5 class="service-heading">Optimizing Real to Synthetic Ratio</h5>
+          <div class="row">
+            
+            <div class="col-md-6 my-auto">
+              <img src="img/methodology/Ratio Test Experimental Design.png" class="img-responsive" alt="Ratio Test Experimental Design" style="width:100%">
+            </div>
+            
+            <div class="col-md-6 my-auto">
+              <p class="text-muted" style="text-align: justify;"> In order to construct our baseline and adding synthetic datasets, we need to figure out what real to synthetic ratio yields the most increase in performance. To find this ratio, we designed the following experiment, where we test 1:0, 1:0.5, 1:0.75, 1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the largest performance boost. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
+             </div>
+        </div>
+      
       <hr class="divider light my-4" />
       <div class="row">
         <div class="col-md-12 my-auto">
-          <h2 class="service-heading">Constructing the Datasets</h2>
+          <h2 class="service-heading">Experimental Setup</h2>
+          <br>
+          <p class="text-muted" style="text-align: justify;">Having clustered and sampled our data and found the optimal real to synthetic ratio, our final datasets for each region is: </p>
+              <ul>
+                <li class="text-muted" style="text-align: justify;"><b>Baseline: </b> Train on 100 Real Non-Target Images, Validate on 100 Target Domain Images</li>
+                <li class="text-muted" style="text-align: justify;"><b>Modified: </b> Train on 100 Real Non-Target Images + 75 Syn Target Images, Validate on 100 Target Domain Images </li>
+              </ul>
+          </br>
+          
+          <h5 class="service-heading">Overview</h5>
+          <div class="row">     
+            <div class="col-md-6 my-auto">
+              <p>Our goal is to test how well synthetic imagery improves performance when the model is testing on a new geography. To achieve this goal, we conduct cross-domain experiments, where we train on the source domain, but we validate on the target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
+             </div>
+            <div class="col-md-6 my-auto">
+              <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%">
+            </div> 
+           
+           <div class="col-md-6 my-auto">
+             <img src="img/methodology/Pairwise Cycle.png" class="img-responsive" alt="Pairwise Experiment Setup" style="width:100%">
+            </div>
+            
+            <div class="col-md-6 my-auto">
+             <p> To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
+            </div>
+          </div>
+          
+            
+          <br>
+          <div class="row">
+            <div class="col-md-6 my-auto">
+            <img src="img/methodology/Within Domain Experiment.png" class="img-responsive" alt="" style="width:100%">
+           <caption class="text-muted"><i>Figure: Within-domain experiment example using Northwest as target domain.</i></caption>
+            </div>
+          <div class="col-md-6 my-auto">
+            <h5 class="service-heading">Within Domain Experiment</h5>
+             <p class="text-muted" style="text-align: left;"> Before we test how well synthetic imagery improves performance when the model is testing on a different domain than the one it was trained on, we need to establish some baseline. We need to know how well the model is doing when it's trained and validated on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments, and we repeat for the other domains/regions.</p>
+          </div>
         </div>
+        <br>
+        
+        
+        <br>
+          <div class="row">
+            <div class="col-md-6 my-auto">
+            <img src="img/methodology/Cross Domain Experiment.png" class="img-responsive" alt="" style="width:100%">
+           <caption class="text-muted"><i>Figure: Cross-domain experiment example using Northwest as target domain and Eastern Midwest as non-target domain.</i></caption>
+            </div>
+          <div class="col-md-6 my-auto">
+            <h5 class="service-heading">Cross Domain Experiment</h5>
+             <p class="text-muted" style="text-align: left;"> We are curious if synthetic data can help overcome differences in geography. To test this, we train on one region, and validate on another region (cross-domain). Then we add synthetic imagery similar to the target domain and compare performance against the baseline. Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain. We repeat for the other domains as well. </p>
+          </div>
+        </div>
+        <br>
+        
+       </div>
       </div>
 
     </div>
