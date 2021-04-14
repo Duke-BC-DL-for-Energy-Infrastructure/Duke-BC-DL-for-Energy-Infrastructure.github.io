@@ -298,7 +298,7 @@
           </p>
         </div>
         <div class="col-md-12 my-auto">
-          <img src="img/methodology/Example Synthetic Images.png" class="img-responsive" alt="" style="width:100%">
+          <img src="img/methodology/Example Synthetic Images.png" class="img-responsive" alt="" style="width:80%; height:70%">
           <caption class="text-muted"><i>Figure: Example synthetic images.</i></caption>
         </div>
       </div>
@@ -372,12 +372,13 @@
           </p>
 
         </div>
-        <div class="col-md-12 my-auto">
+        <!--<div class="col-md-12 my-auto">
           <img src="img/methodology/Testing Synthetic Imagery.png" class="img-responsive" alt="" style="width:80%"> <br><br>
           <p class="text-muted" style="text-align: left;"> Next, we will go into the process of constructing these two datasets and then discuss the 
             variety of experiments that we completed with the synthetic imagery.
           </p>
-        </div>
+        </div>-->
+        
       </div>
       <hr class="divider light my-4" />
 
@@ -422,7 +423,7 @@
           <h5 class="service-heading">Overview</h5>
           <div class="row">     
             <div class="col-md-6 my-auto">
-              <p class="text-muted" style="text-align: justify;">Our goal is to test how well synthetic imagery improves performance when the model is testing on a new geography. To achieve this goal, we conduct cross-domain experiments, where we train on the source domain, but we validate on the target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
+              <p>The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>, that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we validate on the target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
              </div>
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%">
