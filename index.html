@@ -611,10 +611,13 @@
           <div class="row">
             <div class="col-md-1 my-auto"></div>
             <div class="col-md-10 my-auto">
-              <p style="text-align: justify;">The goal of this project was to create synthetic data that could be added to our training set to improve performance.
-              This goal was met, but we think that with the fine-tuning of our synthetic data, we should be able to increase the performance more, especially in
-              terms of the recall. For our additional experiment of testing on novel geographies and turbines, the results indicate that the synthetic data we made to mimic the real overhead imagery
-              in California and Arizona needs to be improved in terms of its quality, especially the model for the small wind turbine.</p>
+              <p style="text-align: justify;">The results show that adding the curated synthetic imagery improves the performance of
+              our object detection model in all cases. This is especially the case when we have a cross domain setting (testing on an unseen region).
+              The performance increase is more limited in the within domain setting, where there the model is testing on a previously seen region. We
+              also explored the various ratios of real to synthetic imagery and found an optimal ratio. This method of synthetic generation is cheap 
+              and fast to produce, allowing us to help an object detection model perform on new domains or when we lack training data, which is often the
+              case when we are trying to obtain information on energy infrastructure. With the aid of synthetic imagery, this method of collecting 
+              locations of energy infrastructure could fill in the information gaps that energy access planners need when making decisions about electrification.</p>
             </div>
             <div class="col-md-1 my-auto"></div>
           </div>
