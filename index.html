@@ -117,7 +117,7 @@
           </p>
         </div>
         <div class="col-md-12">
-          <img src="img/overview/deep_learning.png" class="img-responsive" alt=""style="width:100%">
+          <img src="img/overview_OLD/deep_learning.png" class="img-responsive" alt=""style="width:100%">
           <caption><i>Images from: <a href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">
             http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></i></caption>
         </div>
@@ -144,7 +144,7 @@
           </p>
         </div>
         <div class="col-md-6">
-          <img src="img/overview/energy_information.png" class="img-responsive center" alt=""
+          <img src="img/overview_OLD/energy_information.png" class="img-responsive center" alt=""
           style="width:100%">
         </div>
       </div>
@@ -153,7 +153,7 @@
 
 			<div class="row text-center">
 			  <div class="col-md-6">
-          <div class="col-md-12 my-auto"><img src="img/overview/wind.jpg" class="img-responsive" alt=""
+          <div class="col-md-12 my-auto"><img src="img/overview_OLD/wind.jpg" class="img-responsive" alt=""
           style="width:80%"></div>
         </div>
 			  <div class="col-md-6">
@@ -182,25 +182,11 @@
           </p>
         </div>
         <div class="col-md-12">
-          <img src="img/creating_synthetic_data/cityengine_workflow.png" class="img-responsive" alt=""style="width:100%">
+          <img src="img/creating_synthetic_data_OLD/cityengine_workflow.png" class="img-responsive" alt=""style="width:100%">
         </div>
       </div>
 			  	  
       <hr class="divider light my-4" />
-
-      <div class="row">
-        <div class="col-md-12 my-auto">
-          <h3 class="service-heading">Methods</h3>
-          <p class="text-muted" style="text-align: justify;">
-            Here you can see our roadmap for the research project. In the following sections, we will discuss each
-            of these steps.
-          </p>
-        </div>
-
-        <div class="col-md-12 my-auto">
-          <img src="img/overview/research_steps_colored.png" class="img-responsive" alt=""style="width:100%">
-        </div>
-      </div>
 
 		</div>
 	</section>
@@ -254,17 +240,19 @@
               </dl>
             </div>
             <div class="col-md-12 my-auto">
-              <img src="img/methodology/Collecting Overhead Imagery.png" class="img-responsive" alt="" style="width:100%">
+              <img src="img/methodology/Collecting Overhead Imagery.png" class="img-responsive" alt="" style="width:80%"><br>
               <caption><i>Figure: Each dot represents a single image that we collected.</i></caption>
             </div>
           </div>
           <br>
           <br>
           <div class="row">
-            <p class="text-muted" style="text-align: justify;"> Below we can see the regions splits by which states they include,
-              as well as the number of images we collected for each region.
-            </p>
-            <img src="img/methodology/Where Our Data is From.png" class="img-responsive" alt="" style="width:90%">
+            <div class="col-md-12 my-auto">
+              <p class="text-muted" style="text-align: justify;"> Below we can see the regions splits by which states they include,
+                as well as the number of images we collected for each region.
+              </p>
+              <img src="img/methodology/Where Our Data is From.png" class="img-responsive" alt="" style="width:70%">
+            </div>
           </div>
         </div>
       </div>
@@ -352,6 +340,24 @@
         <div class="col-md-6 my-auto">
           <img src="img/methodology/Angle of Camera 2.png" class="img-responsive" alt="" style="width:100%">
           <caption class="text-muted"><i>Figure: Bounding box size distribution of turbines in real imagery.</i></caption>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 my-auto">
+          <img src="img/methodology/Nearby Background Image.png" class="img-responsive" alt="" style="width:100%">
+          <caption class="text-muted"><i>Figure: Test image and nearby collected background image.</i></caption>
+        </div>
+        <div class="col-md-6 my-auto">
+          <h5 class="service-heading">Which Background Images to Use</h5>
+          <p class="text-muted" style="text-align: left;"> We also have to choose which background images to have placed under our
+            synthetic data. We chose to collect background imagery close to the real images in our testing set so that our synthetic
+            imagery would look as close as possible to the target data. We would not be able to do this if we were deploying the model, 
+            since we wouldn't know our testing data, but we would be able to collect imagery from around the region as our background images.
+            However, using the background images close to our testing locations for these experiments allows us to search for an upper bound
+            on the performance increase that the synthetic data can provide, and can also tell us how important the background images are when 
+            we are creating our synthetic images.
+          </p>
         </div>
       </div>
       <div class="row">
@@ -464,78 +470,57 @@
     </div>
   </section>
 
-  <!-- Results -->
+  <!-- Results-->
   <section class="page-section" id="results">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Results</h2>
-
           <hr class="divider light my-4" />
-
-          <div class="row">
-
-            <div class="col-md-12 my-auto">
-              <h2 style="text-align: left;">Basic Experimental Setup</h2>
-              <p class="text-muted" style="text-align: justify;">
-                Once we have our synthetic data created and our real imagery preprocessed, we are ready to run experiments. 
-                These experiments involve altering the composition of the training dataset to see how the performance of the model changes.
-                The basic experimental setup for this project is to train the model on a control condition with just real data, 
-                and then to use the same dataset but supplement it with synthetic images, and then measure the difference in performance. This will
-                produce two different models and their performance is measured on the same testing set. With this setup, we are only changing
-                one variable and so we can attribute any differences in performance to the added synthetic data.
-
-              </p>
-            </div>
-
-            <div class="col-md-1 my-auto"></div>
-            <div class="col-md-10 my-auto">
-              <img src="img/experimentation_and_results/experimental_setup.png" class="img-responsive" alt="" style="width:100%">
-              <caption><i>Figure: Our basic experimental setup. The real images were split randomly between the training and testing datasets. 
-                The real images are a mix of those with wind turbines present and those without.
-              </i></caption>
-            </div>
-            <div class="col-md-1 my-auto"></div>
-          </div>
-          <br>
           <div class="row">
             <div class="col-md-6 my-auto">
               <br>
               <img src="img/experimentation_and_results/metrics.png" class="img-responsive" alt="" style="width:100%">
               <br>
-              <caption><i>Figure: The model predicted that 4 objects were wind turbines,
-                and 2 of those predictions were correct, meaning the precision would be 2/4 for this example. There are 3 wind turbines in the image
-                and the model found 2 of these, meaning the recall would be 2/3.</i></caption>
+              <caption><font size="2">Figure: The model predicted that 4 objects were wind turbines. 2 of those predictions were correct, meaning the precision would be 2/4. There are 3 wind turbines in the image and the model found 2 of these, meaning the recall would be 2/3.</font></caption>
             </div>
             <div class = "col-md-6">
               <h3>Performance Metrics</h3>
-              <p class="text-muted" style="text-align: justify;">To understand our results, it's important
-              that we first understand the metrics that we have chosen to measure performance. The primary metrics we look at are
-              precision and recall. We'll explain how these metrics can be interpreted in terms of the images on the left.</p>
+              <p class="text-muted" style="text-align: justify;">To understand our results, it's important that we first understand the metrics that we have chosen to measure performance. The primary metrics we will use is Average Precision for an IoU threshold of 0.5 (AP@0.5). We will explain the implication of this metric starting with the images on the left.</p>
               <ul>
                 <li class="text-muted" style="text-align: justify;"><b>Precision: </b> Out of the objects that the model classified as a wind turbine,
                 what fraction of these were actually wind turbines.</li>
-                <li class="text-muted" style="text-align: justify;"><b>Recall: </b> Of the wind turbines present in the data, what fraction of these 
+                <li class="text-muted" style="text-align: justify;"><b>Recall: </b> Out of wind turbines present in the data, what fraction of these
                 did the model find.</li>
               </ul>
-              <p class="text-muted" style="text-align: justify;">Since the goal of this model is to detect objects in very large sets of overhead imagery, 
-                manually removing objects misclassified as wind turbines is much easier than identifying undetected wind turbines across the entire dataset. 
-                For this reason, we prioritize recall over precision as a metric of good performance.
-              </p>
-            </div>   
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-6">
-              <h3>Results</h3>
-              <p class="text-muted" style="text-align: justify;">Adding synthetic data to our training set significantly improved the precision of our
-                model. However, the recall does not change significantly. Our hypothesis for this is that with the added synthetic data, model was doing well on large wind turbines
-                while missing many of the small wind turbines. This prompted us to create synthetic data that contained small wind turbines to try to 
-                fix this issue.
-              </p>
             </div>
-            <div class="col-md-6">
-              <img src="img/experimentation_and_results/results.png" class="img-responsive" alt="" style="width:100%">
+            <div class="row">
+              <div class = "col-md-6 my-auto">
+                <p class="text-muted" style="text-align: justify;">Now we plot the values of precision and recall a model can reach when doing predictions on a graph, which is known as a precision-recall curve. You can see on the curve that as precision increases, recall decreases, and vice versa. There is hence a tradeoff between precision and recall. However, we would like to have high values for both precision and recall, which means we would like the area under the precision-recall curve to be as high as possible. A metric that quantifies this area is Average Precision (AP). </p>
+                <p class="text-muted" style="text-align: justify;">Note that in the machine learning space, a small absolute increase in AP is already a significant improvement.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <br>
+                <img src="img/experimentation_and_results/sample_pr.png" class="img-responsive" alt="" style="width:100%">
+                <br>
+                <caption><font size="2">Figure: Sample Precision Recall Curve. We would like the curve to move to right as much as possible as indicated by the green arrow. </font></caption>
+              </div>
+          <br>
+          <hr class="divider light my-4" />
+          <h2 style="text-align: left;">Results</h2>
+          <div class="row">
+              <div class="col-md-12 text-center">
+                <p class="text-muted" style="text-align: justify;"> The performances of the model with added synthetic images <b>improve significantly </b> in both within-domain and cross-domain settings. Synthetic images are especially helpful in cross-domain settings, which means they can be useful when there is a lack of data or when it is cost-prohibitive to collect data of the target domain.
+                </p>
+              </div>
+            <div class="col-md-12 my-auto">
+              <img src="img/experimentation_and_results/overall-results.png" class="img-responsive" alt="" style="width:80%">
+            </div>
+            <div class="col-md-12 my-auto">
+              <img src="img/experimentation_and_results/overall-results-table.png" class="img-responsive" alt="" style="width:70%">
+              <br>
+              <caption><font size="2">Figure: All values are in AP@0.5. </font></caption>
             </div>
           </div>
           <br>
@@ -559,7 +544,7 @@
             <div class="col-md-12 text-center">
               <p class="text-muted" style="text-align: justify;">In addition to this first experiment, we also conducted additional experiments by changing
               how the dataset was split between the training and testing. One experiment that we explored was excluding a geographic region from the testing set.
-              We wanted to choose a region that would be the most difficult for the model to perform on without having training data to learn from. We chose to 
+              We wanted to choose a region that would be the most difficult for the model to perform on without having training data to learn from. We chose to
               exclude California and Arizona from the testing set because the geography is both self-similar and fairly different
               from the other regions and also because the small wind turbines in California would be very difficult for the model to test on. In this case, our training set contains
               no small wind turbines while the testing set does contain small turbines.
