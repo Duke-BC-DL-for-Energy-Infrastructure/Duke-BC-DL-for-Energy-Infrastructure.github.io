@@ -69,7 +69,7 @@
         <div class="intro-lead-in">Bass Connections 2020-2021</div>
         <div class="intro-heading text-uppercase">Deep Learning for Rare Energy Infrastructure in Satellite Imagery
         </div>
-        <p class="text-white-75 font-weight-light mb-5" style="font-size: 30px">Ada Ye, Eddy Lin, Jose Luis Moscos, Tyler Feldman, Jessie Ou, Wendy Zhang</p>
+        <p class="text-white-75 font-weight-light mb-5" style="font-size: 30px">Ada Ye, Eddy Lin, Jose Luis Moscoso, Tyler Feldman, Jessie Ou, Wendy Zhang</p>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="https://github.com/Duke-BC-DL-for-Energy-Infrastructure">See Our
           Github Repository</a>
         <a class="btn btn-primary btn-alt js-scroll-trigger" href="https://figshare.com/articles/dataset/Baseline_Dataset_and_Synthetic_Images/13626377"> Dataset </a>
@@ -92,8 +92,8 @@
         <div class="col-md-12">
           <h3>Energy Access Planning</h3>
           <p class="text-muted">Access to electricity is important for promoting economic development along with improving living conditions.
-            Around <a href="https://energyeducation.ca/encyclopedia/Access_to_electricity">1.2 billion people worldwide do not have electricity in their homes</a>, 
-            many of them located in Africa and Asia. The first step in this process is to understand the location of existing energy infrastructure, which helps enable analysis of 
+            Around <a href="https://energyeducation.ca/encyclopedia/Access_to_electricity">1.2 billion people worldwide do not have electricity in their homes</a>,
+            many of them located in Africa and Asia. The first step in this process is to understand the location of existing energy infrastructure, which helps enable analysis of
             the distribution of energy resources as well as the consumption of energy. Doing this through surveys
             is incredibly time-consuming, which is why we are trying to locate energy infrastructure automatically by applying deep learning techniques to overhead imagery.
           </p>
@@ -127,11 +127,11 @@
       </div>
 
       <hr class="divider light my-4" />
-			
+
       <div class="row text-center">
         <div class="col-md-6">
           <h3 class="service-heading">Background</h3>
-          <p class="text-muted" style="text-align: justify;"> 
+          <p class="text-muted" style="text-align: justify;">
             For five years, the Duke Energy Data Analytics Lab has worked on developing deep learning models that identify energy infrastructure, with an end goal of
             generating maps of power grid networks that can aid policymakers in implementing effective
             electrification strategies. In 2015-16, researchers created a model that can detect solar photovoltaic arrays with high accuracy <a
@@ -151,7 +151,7 @@
           style="width:100%">
         </div>
       </div>
-			  
+
 			<hr class="divider light my-4" />
 
 			<div class="row text-center">
@@ -161,8 +161,8 @@
         </div>
 			  <div class="col-md-6">
           <h3 class="service-heading">Challenge: Rare Objects</h3>
-          <p class="text-muted" style="text-align: justify;"> Object detection networks, like the one used in this work, are notorious for their "data hunger," requiring 
-            <strong>large amounts of annotated training data to perform well</strong>. 
+          <p class="text-muted" style="text-align: justify;"> Object detection networks, like the one used in this work, are notorious for their "data hunger," requiring
+            <strong>large amounts of annotated training data to perform well</strong>.
             For common infrastructure like buildings and roads, there is ample real-world data available to train such models.
             However, for rare objects like wind turbines, there is not enough available imagery to satisfy the data requirements of these
             models. Further, due to their rarity and low spatial density in overhead imagery, acquiring more data can be very expensive.
@@ -172,7 +172,7 @@
       <br>
 
       <hr class="divider light my-4" />
-      
+
       <div class="row">
         <div class="col-md-12">
           <h3>Solution: Synthetic Imagery</h3>
@@ -180,7 +180,7 @@
             Since training data is difficult to collect, in this project we explore creating synthetic data to supplement the real data that are available.
             We do this using CityEngine, which can render and generate 3D landscapes and structures
             based on input from the designer. In our case, we are populating a landscape with wind turbine models.
-            Then we can position the camera in the overhead position and capture images with similar appearances to overhead imagery. 
+            Then we can position the camera in the overhead position and capture images with similar appearances to overhead imagery.
             Since we placed the wind turbines in the synthetic image, we can also generate ground truth labels for each of these images.
           </p>
         </div>
@@ -188,12 +188,12 @@
           <img src="img/creating_synthetic_data_OLD/cityengine_workflow.png" class="img-responsive" alt=""style="width:100%">
         </div>
       </div>
-			  	  
+
       <hr class="divider light my-4" />
 
 		</div>
 	</section>
-  
+
   <!-- Methodology -->
   <section class="page-section" id="methodology">
     <div class="container">
@@ -215,9 +215,9 @@
           <h2 class="service-heading text-left">Collecting Real Imagery</h2>
           <div class="row">
             <div class="col-md-12 my-auto">
-              <p class="text-muted" style="text-align: justify;"> For our overhead imagery of wind turbines, we chose to sample them from 
+              <p class="text-muted" style="text-align: justify;"> For our overhead imagery of wind turbines, we chose to sample them from
                 <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">NAIP</a>.
-                This imagery covers a large part of the US and is very high resolution, making it great for our experiments. 
+                This imagery covers a large part of the US and is very high resolution, making it great for our experiments.
                 We collected imagery in three different regions that we called Northwest, Northeast, and Eastern Midwest. We noticed
                 differences in the visual appearance of the background in the images collected in these three regions:
               </p>
@@ -261,15 +261,15 @@
         </div>
       </div>
 
-      
+
       <hr class="divider light my-4" />
       <div class="row">
         <div class="col-md-12 my-auto">
           <h2 class="service-heading">Creating Synthetic Imagery</h2>
-          <p class="text-muted" style="text-align: left;"> To create synthetic imagery, we use a software called CityEngine. As inputs to 
-            this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images 
+          <p class="text-muted" style="text-align: left;"> To create synthetic imagery, we use a software called CityEngine. As inputs to
+            this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images
             as seen on the right. First, a randomly chosen background image is placed, and then the turbine model is generated randomly
-            on top of the background image to create the 3D scene shown in the middle of the figure below. Next, a simulated camera is moved 
+            on top of the background image to create the 3D scene shown in the middle of the figure below. Next, a simulated camera is moved
             to the overhead / bird's eye view, and then we can save and export this overhead synthetic image.
           </p>
         </div>
@@ -310,7 +310,7 @@
         <div class="col-md-12 my-auto">
           <h3 class="service-heading">Synthetic Imagery Design Considerations</h3>
           <p class="text-muted" style="text-align: left;"> The design of the synthetic imagery is important because the closer the
-            synthetic imagery is to the real imagery, the more the synthetic imagery will improve our performance when adding it to our 
+            synthetic imagery is to the real imagery, the more the synthetic imagery will improve our performance when adding it to our
             training set.
           </p>
         </div>
@@ -336,7 +336,7 @@
           <h5 class="service-heading">Angle of the Camera</h5>
           <p class="text-muted" style="text-align: left;"> The next decision we had to make about the synthetic imagery design was
             the angle of the simulated camera when we are capturing photos of the synthetic 3D scene. We noticed that in the real imagery,
-            some of the images were captured at an angle. This can be seen in the real images to the right, where we can see the pole of 
+            some of the images were captured at an angle. This can be seen in the real images to the right, where we can see the pole of
             the turbine due to the angle of the camera. We tried to incorporate this into our synthetic imagery, where we would pick
             to either take the image from directly above or to have a randomly chosen camera angle between 60 and 90 degrees.
           </p>
@@ -356,10 +356,10 @@
           <h5 class="service-heading">Which Background Images to Use</h5>
           <p class="text-muted" style="text-align: left;"> We also have to choose which background images to have placed under our
             synthetic data. We chose to collect background imagery close to the real images in our testing set so that our synthetic
-            imagery would look as close as possible to the target data. We would not be able to do this if we were deploying the model, 
+            imagery would look as close as possible to the target data. We would not be able to do this if we were deploying the model,
             since we wouldn't know our testing data, but we would be able to collect imagery from around the region as our background images.
             However, using the background images close to our testing locations for these experiments allows us to search for an upper bound
-            on the performance increase that the synthetic data can provide, and can also tell us how important the background images are when 
+            on the performance increase that the synthetic data can provide, and can also tell us how important the background images are when
             we are creating our synthetic images.
           </p>
         </div>
@@ -368,7 +368,7 @@
         <h3 class="service-heading">Testing the Synthetic Imagery</h3>
         <div class="col-md-12 my-auto">
           <p class="text-muted" style="text-align: left;"> Now that we have some synthetic imagery, we want to test whether it can
-            help the performance of our object detection model when we deploying it on a new geography or when we lack training data. 
+            help the performance of our object detection model when we deploying it on a new geography or when we lack training data.
             To test this, we can train our model on two different training datasets. One contains purely real imagery, while the second
             contains the same real imagery, but we add in a number of synthetic images. We then test the performance of both models and
             compare the performances.
@@ -377,18 +377,18 @@
         </div>
         <!--<div class="col-md-12 my-auto">
           <img src="img/methodology/Testing Synthetic Imagery.png" class="img-responsive" alt="" style="width:80%"> <br><br>
-          <p class="text-muted" style="text-align: left;"> Next, we will go into the process of constructing these two datasets and then discuss the 
+          <p class="text-muted" style="text-align: left;"> Next, we will go into the process of constructing these two datasets and then discuss the
             variety of experiments that we completed with the synthetic imagery.
           </p>
         </div>-->
-        
+
       </div>
       <hr class="divider light my-4" />
 
       <div class="row">
         <div class="col-md-12 my-auto">
         <h2 class="service-heading">Constructing the Datasets</h2>
-          
+
         <div class="row">
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Clustering and Stratified Sampling</h5>
@@ -398,19 +398,19 @@
             <img src="img/methodology/Clustering and Stratified Sampling.png" class="img-responsive" alt="" style="width:100%">
           </div>
         </div>
-          
+
           <h5 class="service-heading">Optimizing Real to Synthetic Ratio</h5>
           <div class="row">
-            
+
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Ratio Test Experimental Design.png" class="img-responsive" alt="Ratio Test Experimental Design" style="width:100%">
             </div>
-            
+
             <div class="col-md-6 my-auto">
               <p class="text-muted" style="text-align: justify;"> In order to construct our baseline and adding synthetic datasets, we need to figure out what real to synthetic ratio yields the most increase in performance. To find this ratio, we designed the following experiment, where we test 1:0, 1:0.5, 1:0.75, 1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the largest performance boost. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
              </div>
         </div>
-      
+
       <hr class="divider light my-4" />
       <div class="row">
         <div class="col-md-12 my-auto">
@@ -422,26 +422,26 @@
                 <li class="text-muted" style="text-align: justify;"><b>Modified: </b> Train on 100 Real Non-Target Images + 75 Syn Target Images, Validate on 100 Target Domain Images </li>
               </ul>
           </br>
-          
+
           <h5 class="service-heading">Overview</h5>
-          <div class="row">     
+          <div class="row">
             <div class="col-md-6 my-auto">
               <p>The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>, that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we validate on the target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
              </div>
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%">
-            </div> 
-           
+            </div>
+
            <div class="col-md-6 my-auto">
              <img src="img/methodology/Pairwise Cycle.png" class="img-responsive" alt="Pairwise Experiment Setup" style="width:100%">
             </div>
-            
+
             <div class="col-md-6 my-auto">
              <p class="text-muted" style="text-align: justify;"> To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
             </div>
           </div>
-          
-            
+
+
           <br>
           <div class="row">
             <div class="col-md-6 my-auto">
@@ -454,8 +454,8 @@
           </div>
         </div>
         <br>
-        
-        
+
+
         <br>
           <div class="row">
             <div class="col-md-6 my-auto">
@@ -468,7 +468,7 @@
           </div>
         </div>
         <br>
-        
+
        </div>
       </div>
 
@@ -619,9 +619,9 @@
               <p class="text-muted" style="text-align: justify;">The results show that adding the curated synthetic imagery improves the performance of
               our object detection model in all cases. This is especially the case when we have a cross domain setting (testing on an unseen region).
               The performance increase is more limited in the within domain setting, where there the model is testing on a previously seen region. We
-              also explored the various ratios of real to synthetic imagery and found an optimal ratio. This method of synthetic generation is cheap 
+              also explored the various ratios of real to synthetic imagery and found an optimal ratio. This method of synthetic generation is cheap
               and fast to produce, allowing us to help an object detection model perform on new domains or when we lack training data, which is often the
-              case when we are trying to obtain information on energy infrastructure. With the aid of synthetic imagery, this method of collecting 
+              case when we are trying to obtain information on energy infrastructure. With the aid of synthetic imagery, this method of collecting
               locations of energy infrastructure could fill in the information gaps that energy access planners need when making decisions about electrification.</p>
             </div>
             <div class="col-md-1 my-auto"></div>
@@ -649,7 +649,7 @@
             <div class="col-md-12 my-auto">
               <ol class="text-muted" style="text-align: justify;">
                 <li>
-                  Apply these techniques to <strong>detect other types of energy infrastructure</strong>. Because high voltage transmission towers are 
+                  Apply these techniques to <strong>detect other types of energy infrastructure</strong>. Because high voltage transmission towers are
                   similar structure to wind turbines, we can easily adapt our synthetic image generation process for transmission towers. We could then
                   test this synthetic imagery in the same manner as what we performed for the synthetic imagery of wind turbines, and see if this method
                   extends to this other energy infrastructure.
@@ -680,7 +680,7 @@
         </div>
       </div>
       <br>
-      <div class="row justify-content-center">   
+      <div class="row justify-content-center">
         <p class="text-muted" style="text-align: justify;"> We would like to thank Dr. Kyle Bradbury, Dr. Jordan Malof, and Wayne Hu for their
           help and guidance along the way. We would also like to thank the previous Bass Connections and Data+ teams for their work leading up
           to this project. We would also like to thank Dr. Rob Fetter, Dr. Marc Jeuland, and Dr. Luana Lima for sharing their work with us.
@@ -691,7 +691,7 @@
         <div class="col-md-6 my-auto">
           <img src="img/acknowledgement/Bass-Connections-Logo.jpeg" class="img-responsive" alt="" style="width:100%">
         </div>
-        
+
         <div class="col-md-6 my-auto">
           <img src="img/acknowledgement/Duke Energy Initiative Logo.png" class="img-responsive" alt="" style="width:100%">
         </div>
