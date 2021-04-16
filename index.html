@@ -111,13 +111,12 @@
           <p class="text-muted" style="text-align: justify;">
             Using deep learning, we can feed an image to a model, and the model is able to make predictions about the contents or characteristics of that image. A common
             technique for image analysis is classification, in which the model predicts the class of the image out of a list of possible classes.
-            In the image below, the model predicts that the image is of a cat, and is 98% confident with this classification. The model learns how to predict these classifications based
-            on examples that are shown to it. After it has been trained, it can classify images that it has not seen before.
+            In the image on the right, the model predicts that the input picture is of a cat, and is 98% confident with this classification. The model learns how to predict
+            these classifications based on examples that are shown to it. After it has been trained, it can classify images that it has not seen before.
           </p>
         </div>
         <div class="col-md-6">
-          <img src="img/motivation/cat_image_classifier.png" class="img-responsive center" alt=""
-          style="width:100%">
+          <img src="img/motivation/cat_image_classifier.png" class="img-responsive" alt="" style="width:100%">
           <caption><i>Images from: <a href="https://www.codeproject.com/Articles/5160467/Image-Classification-Using-Neural-Networks-in-NET">
             Code Project</a></i></caption>
         </div>
@@ -125,26 +124,23 @@
 
       <hr class="divider light my-4" />
 
-
       <div class="row text-center">
-
         <div class="col-md-6">
-          <h3 class="service-heading">Object Detection</h3>
-          <p class="text-muted" style="text-align: justify;">Using deep learning, we can feed an image to a model, and the model is able to make predictions about the contents or characteristics of that image. A common
-            technique for image analysis is classification, in which the model predicts the class of the image out of a list of possible classes.
-            In the image below, the model predicts that the image is of a cat, and is 90% confident with this classification. The model learns how to predict these classifications based
-            on examples that are shown to it. After it has been trained, it can classify images that it has not seen before.<br>
-            <br>
-            For this project, we are focusing on object detection, which is a combination of classification with localization. The model analyzes images and predicts bounding boxes that
-            surround each object. It then also classifies each object, producing a confidence score corresponding to the prediction. In the image below, the model predicted that there was
-            an object in the box shown in red, and also predicted that the object within that box is a cat. The model learns how to predict these boxes and classifications based on examples shown to it.
-            These examples have labels that we refer to as ground truth that contain the information of where the objects are in the image.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt=""style="width:100%">
+          <div class="col-md-12 my-auto"><img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt=""
+            style="width:90%"></div>
           <caption><i>Images from: <a href="https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b">
             You only look once, or YOLO</a></i></caption>
+        </div>
+        <div class="col-md-6">
+          <h3 class="service-heading">Object Detection</h3>
+          <p class="text-muted" style="text-align: justify;">
+            For this project, we are focusing on object detection, which is a combination of classification with localization. The model analyzes
+            images and predicts bounding boxes that surround each object. It then also classifies each object, producing a confidence score
+            corresponding to the prediction. In the image on the left, the model predicted that there were different objects in the boxes shown
+            in green, yellow and pink, and also predicted that the object within these colored boxes were a handbag, a car and a person repectivelly.
+            The model learns how to predict these boxes and classifications based on examples shown to it. These examples have labels that we refer
+            to as ground truth that contain the information of where the objects are in the image.
+          </p>
         </div>
       </div>
 
