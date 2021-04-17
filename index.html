@@ -106,23 +106,44 @@
       <hr class="divider light my-4" />
 
       <div class="row text-center">
-        <div class="col-md-12">
-          <h3 style="text-align: left;">Deep Learning and Object Detection</h3>
-          <p class="text-muted" style="text-align: justify;">Using deep learning, we can feed an image to a model, and the model is able to make predictions about the contents or characteristics of that image. A common
+        <div class="col-md-6">
+          <h3 class="service-heading">Deep Learning</h3>
+          <p class="text-muted" style="text-align: justify;">
+            Using deep learning, we can feed an image to a model, and the model is able to make predictions about the contents or characteristics of that image. A common
             technique for image analysis is classification, in which the model predicts the class of the image out of a list of possible classes.
-            In the image below, the model predicts that the image is of a cat, and is 90% confident with this classification. The model learns how to predict these classifications based
-            on examples that are shown to it. After it has been trained, it can classify images that it has not seen before.<br>
-            <br>
-            For this project, we are focusing on object detection, which is a combination of classification with localization. The model analyzes images and predicts bounding boxes that
-            surround each object. It then also classifies each object, producing a confidence score corresponding to the prediction. In the image below, the model predicted that there was
-            an object in the box shown in red, and also predicted that the object within that box is a cat. The model learns how to predict these boxes and classifications based on examples shown to it.
-            These examples have labels that we refer to as ground truth that contain the information of where the objects are in the image.
+            In the image on the right, the model predicts that the input picture is of a cat, and is 98% confident with this classification. The model learns how to predict
+            these classifications based on examples that are shown to it. After it has been trained, it can classify images that it has not seen before.
           </p>
         </div>
-        <div class="col-md-12">
-          <img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt=""style="width:100%">
+        <div class="col-md-6">
+          <img src="img/motivation/cat_image_classifier.png" class="img-responsive" alt="" style="width:100%">
+          <caption><i>Images from: <a href="https://www.codeproject.com/Articles/5160467/Image-Classification-Using-Neural-Networks-in-NET">
+            Code Project</a></i></caption>
+        </div>
+      </div>
+
+      <hr class="divider light my-4" />
+
+      <div class="row text-center">
+        <div class="col-md-6">
+          <br>
+          <br>
+          <br>
+          <div class="col-md-12 my-auto"><img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt=""
+            style="width:90%"></div>
           <caption><i>Images from: <a href="https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b">
             You only look once, or YOLO</a></i></caption>
+        </div>
+        <div class="col-md-6">
+          <h3 class="service-heading">Object Detection</h3>
+          <p class="text-muted" style="text-align: justify;">
+            For this project, we are focusing on object detection, which is a combination of classification with localization. The model analyzes
+            images and predicts bounding boxes that surround each object. It then also classifies each object, producing a confidence score
+            corresponding to the prediction. In the image on the left, the model predicted that there were different objects in the boxes shown
+            in green, yellow and pink, and also predicted that the object within these colored boxes were a handbag, a car and a person repectivelly.
+            The model learns how to predict these boxes and classifications based on examples shown to it. These examples have labels that we refer
+            to as ground truth that contain the information of where the objects are in the image.
+          </p>
         </div>
       </div>
 
@@ -301,7 +322,7 @@
           </p>
         </div>
         <div class="col-md-12 my-auto">
-          <img src="img/methodology/Example Synthetic Images.png" class="img-responsive" alt="" style="width:80%; height:70%"><br>
+          <img src="img/methodology/Example Synthetic Images.png" class="center" alt="" style="width:80%; height:70%"><br>
           <caption class="text-muted"><i>Figure: Example synthetic images.</i></caption>
         </div>
       </div>
@@ -392,7 +413,11 @@
         <div class="row">
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Clustering and Stratified Sampling</h5>
-              <p class="text-muted" style="text-align: justify;"> Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets are representative of a geographic region. To ensure our datasets are representative, we k-means clustering within each region and then stratified sample from each cluster to construct our 100:100 (train to test ratio) constrained baseline datasets to increase homogeneity within a region. </p>
+              <p class="text-muted" style="text-align: justify;">
+                Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets
+                are representative of a geographic region. To ensure our datasets are representative, we used DBScan method for clustering
+                within each region and then stratified sample from each cluster to construct our 100:100 (train to test ratio) constrained
+                baseline datasets to increase homogeneity within a region. </p>
           </div>
           <div class="col-md-6 my-auto">
             <img src="img/methodology/Clustering and Stratified Sampling.png" class="img-responsive" alt="" style="width:100%">
@@ -407,7 +432,11 @@
             </div>
 
             <div class="col-md-6 my-auto">
-              <p class="text-muted" style="text-align: justify;"> In order to construct our baseline and adding synthetic datasets, we need to figure out what real to synthetic ratio yields the most increase in performance. To find this ratio, we designed the following experiment, where we test 1:0, 1:0.5, 1:0.75, 1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the largest performance boost. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
+              <p class="text-muted" style="text-align: justify;">
+                In order to construct our baseline and adding synthetic datasets, we need to figure out what real to synthetic ratio yields
+                the most increase in performance. To find this ratio, we designed the following experiment, where we test 1:0, 1:0.5, 1:0.75,
+                1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the largest performance
+                boost. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
              </div>
         </div>
 
@@ -416,7 +445,8 @@
         <div class="col-md-12 my-auto">
           <h2 class="service-heading">Experimental Setup</h2>
           <br>
-          <p class="text-muted" style="text-align: justify;">Having clustered and sampled our data and found the optimal real to synthetic ratio, our final datasets for each region is: </p>
+          <p class="text-muted" style="text-align: justify;">
+            Having clustered and sampled our data and found the optimal real to synthetic ratio, our final datasets for each region is: </p>
               <ul>
                 <li class="text-muted" style="text-align: justify;"><b>Baseline: </b> Train on 100 Real Non-Target Images, Validate on 100 Target Domain Images</li>
                 <li class="text-muted" style="text-align: justify;"><b>Modified: </b> Train on 100 Real Non-Target Images + 75 Syn Target Images, Validate on 100 Target Domain Images </li>
@@ -426,7 +456,14 @@
           <h5 class="service-heading">Overview</h5>
           <div class="row">
             <div class="col-md-6 my-auto">
-              <p>The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>, that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we validate on the target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
+              <p>The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially
+                in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>,
+                that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic
+                imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence
+                of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we validate on the
+                target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also
+                conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. In our case,
+                each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. </p>
              </div>
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%">
@@ -437,7 +474,8 @@
             </div>
 
             <div class="col-md-6 my-auto">
-             <p class="text-muted" style="text-align: justify;"> To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
+             <p class="text-muted" style="text-align: justify;">
+               To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
             </div>
           </div>
 
@@ -450,7 +488,11 @@
             </div>
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Within Domain Experiment</h5>
-             <p class="text-muted" style="text-align: left;"> Before we test how well synthetic imagery improves performance when the model is testing on a different domain than the one it was trained on, we need to establish some baseline. We need to know how well the model is doing when it's trained and validated on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments, and we repeat for the other domains/regions.</p>
+             <p class="text-muted" style="text-align: left;">
+               Before we test how well synthetic imagery improves performance when the model is testing on a different domain than the one
+               it was trained on, we need to establish some baseline. We need to know how well the model is doing when it's trained and
+               validated on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments,
+               and we repeat for the other domains/regions.</p>
           </div>
         </div>
         <br>
@@ -464,7 +506,11 @@
             </div>
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Cross Domain Experiment</h5>
-             <p class="text-muted" style="text-align: left;"> We are curious if synthetic data can help overcome differences in geography. To test this, we train on one region, and validate on another region (cross-domain). Then we add synthetic imagery similar to the target domain and compare performance against the baseline. Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain. We repeat for the other domains as well. </p>
+             <p class="text-muted" style="text-align: left;">
+               We are curious if synthetic data can help overcome differences in geography. To test this, we trained on one region, and validated
+               on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline.
+               Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain.
+               We repeated for the other domains as well. </p>
           </div>
         </div>
         <br>
@@ -487,29 +533,41 @@
               <br>
               <img src="img/results/metrics.png" class="img-responsive" alt="" style="width:100%">
               <br>
-              <caption><font size="2">Figure 1: The model predicted that 4 objects were wind turbines. 2 of those predictions were correct, meaning the precision would be 2/4. There are 3 wind turbines in the image and the model found 2 of these, meaning the recall would be 2/3.</font></caption>
+              <caption><font size="2">
+                Figure 1: The model predicted that 4 objects were wind turbines. 2 of those predictions were correct, meaning
+                the precision would be 2/4. There are 3 wind turbines in the image and the model found 2 of these, meaning the
+                recall would be 2/3.</font></caption>
             </div>
             <div class = "col-md-6">
               <h3>Performance Metrics</h3>
-              <p class="text-muted" style="text-align: justify;">To understand our results, it's important that we first understand the metrics that we have chosen to measure performance. The primary metrics we will use is Average Precision for an IoU threshold of 0.5 (AP@0.5). We will explain the implication of this metric starting with the images on the left.</p>
+              <p class="text-muted" style="text-align: justify;">
+                To understand our results, it's important that we first understand the metrics that we have chosen to measure
+                performance. The primary metrics we will use is Average Precision for an IoU threshold of 0.5 (AP@0.5). We will explain
+                the implication of this metric starting with the images on the left.</p>
               <ul>
                 <li class="text-muted" style="text-align: justify;"><b>Precision: </b> Out of the objects that the model classified as a wind turbine,
-                what fraction of these were actually wind turbines.</li>
+                  what fraction of these were actually wind turbines.</li>
                 <li class="text-muted" style="text-align: justify;"><b>Recall: </b> Out of wind turbines present in the data, what fraction of these
-                did the model find.</li>
+                  did the model find.</li>
               </ul>
             </div>
             <div class="row">
               <div class = "col-md-6 my-auto">
-                <p class="text-muted" style="text-align: justify;">Now we plot the values of precision and recall a model can reach when doing predictions on a graph, which is known as a precision-recall curve. You can see on the curve that as precision increases, recall decreases, and vice versa. There is hence a tradeoff between precision and recall. However, we would like to have high values for both precision and recall, which means we would like the area under the precision-recall curve to be as high as possible. A metric that quantifies this area is Average Precision (AP). </p>
-                <p class="text-muted" style="text-align: justify;">Note that in the machine learning space, a small absolute increase in AP is already a significant improvement.
+                <p class="text-muted" style="text-align: justify;">
+                  Now we plot the values of precision and recall a model can reach when doing predictions on a graph, which is known as a precision-recall
+                  curve. You can see on the curve that as precision increases, recall decreases, and vice versa. There is hence a tradeoff between
+                  precision and recall. However, we would like to have high values for both precision and recall, which means we would like the area
+                  under the precision-recall curve to be as high as possible. A metric that quantifies this area is Average Precision (AP). </p>
+                <p class="text-muted" style="text-align: justify;">
+                  Note that in the machine learning space, a small absolute increase in AP is already a significant improvement.
                 </p>
               </div>
               <div class="col-md-6">
                 <br>
                 <img src="img/results/sample_pr.png" class="img-responsive" alt="" style="width:100%">
                 <br>
-                <caption><font size="2">Figure 2: Sample Precision Recall Curve. We would like the curve to move to right as much as possible as indicated by the green arrow. </font></caption>
+                <caption><font size="2">Figure 2: Sample Precision Recall Curve. We would like the curve to move to right as much as possible as indicated
+                  by the green arrow. </font></caption>
                 <br>
                 <br>
                 <br>
@@ -525,14 +583,20 @@
                 </div>
                 <div class = "col-md-6">
                   <h3>Reducing Variance</h3>
-                  <p class="text-muted" style="text-align: justify;">Due to randomness in machine learning, there will be slight variations between the results of each run, as shown on the left image. Each experiment is therefore repeated 4 times to account for this randomness and improve the accuracy of the result. The average AP value is calculated and used to compare results of our baseline model and model with added synthetic images.</p>
+                  <p class="text-muted" style="text-align: justify;">
+                    Due to randomness in machine learning, there will be slight variations between the results of each run, as shown on the left image.
+                    Each experiment is therefore repeated 4 times to account for this randomness and improve the accuracy of the result. The average AP
+                    value is calculated and used to compare results of our baseline model and model with added synthetic images.</p>
                 </div>
           <br>
           <hr class="divider light my-4" />
           <h2 style="text-align: left;">Results</h2>
           <div class="row">
               <div class="col-md-12 text-center">
-                <p class="text-muted" style="text-align: justify;"> The performances of the model with added synthetic images <b>improve significantly </b> in both within-domain and cross-domain settings. Synthetic images are especially helpful in cross-domain settings, which means they can be useful when there is a lack of data or when it is cost-prohibitive to collect data of the target domain.
+                <p class="text-muted" style="text-align: justify;">
+                  The performances of the model with added synthetic images <b>improve significantly </b> in both within-domain and cross-domain settings.
+                  Synthetic images are especially helpful in cross-domain settings, which means they can be useful when there is a lack of data or when it
+                  is cost-prohibitive to collect data of the target domain.
                 </p>
               </div>
             <div class="col-md-12 my-auto">
@@ -564,7 +628,12 @@
           <h2 style="text-align: left;">Results of Each Geographic Domain Respectively</h2>
           <div class="row">
             <div class="col-md-12 text-center">
-              <p class="text-muted" style="text-align: justify;">Here we will present a closer look into the results of training with real images from each of the 3 geographic regions respectively. There is a disparity in performance when the model is trained with real images of different geographic domains. In particular, in cross-domain experiments that validate on Eastern Midwest, the model perform generally worse than when valiating on other regions. Meanwhile, the model benefits the most from the addition of synthetic imagery if the baseline model does not perform comparatively well, such as in the case of Eastern Midwest.
+              <p class="text-muted" style="text-align: justify;">
+                Here we will present a closer look into the results of training with real images from each of the 3 geographic regions respectively.
+                There is a disparity in performance when the model is trained with real images of different geographic domains. In particular, in
+                cross-domain experiments that validate on Eastern Midwest, the model perform generally worse than when valiating on other regions.
+                Meanwhile, the model benefits the most from the addition of synthetic imagery if the baseline model does not perform comparatively
+                well, such as in the case of Eastern Midwest.
               </p>
             </div>
           </div>
@@ -597,9 +666,14 @@
                 <caption><i>Figure 9: Results of training with real images from Eastern Midwest</i></caption>
             </div>
             <div class="col-md-6">
-                <p class="text-muted" style="text-align: justify;">As shown above, the model performs consistently worse when validating on Eastern Midwest, yet that is when the model has the greatest improvement in AP from the addition of synthetic imagery. </p>
+                <p class="text-muted" style="text-align: justify;">
+                  As shown above, the model performs consistently worse when validating on Eastern Midwest, yet that is when the model
+                  has the greatest improvement in AP from the addition of synthetic imagery. </p>
                 <br>
-                <p class="text-muted" style="text-align: justify;">One explanation for the disparity from performance in Eastern Midwest is the wide diversity of geographic backgrounds presented in the region's dataset. The exact model performance and improvement synthetic images can make depend on geographic regions. Regions with diverse backgrounds may limit the model's performance. </p>
+                <p class="text-muted" style="text-align: justify;">
+                  One explanation for the disparity from performance in Eastern Midwest is the wide diversity of geographic backgrounds
+                  presented in the region's dataset. The exact model performance and improvement synthetic images can make depend on geographic
+                  regions. Regions with diverse backgrounds may limit the model's performance. </p>
             </div>
           </div>
   </section>
