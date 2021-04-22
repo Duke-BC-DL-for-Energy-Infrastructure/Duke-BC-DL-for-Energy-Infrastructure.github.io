@@ -267,8 +267,9 @@ We start with the training of wind turbines, because wind turbines are relativel
                 real and synthetic imagery, and then we can create two datasets. One dataset contains purely real imagery, 
                 while the second contains the same real imagery, but we add in some synthetic images. We can train 
                 an object detection model on the first dataset, test its performance, and then do the same with the second 
-                dataset, and finally compare the two performances. In this section, we'll walk through each of the steps 
-                required to perform this experiment.
+                dataset, and finally compare the two performances. If the performance of the model is better when trained on 
+                the dataset that had added synthetic imagery, we can say that the synthetic imagery helps the performance of 
+                the model. In this section, we'll walk through each of the steps required to perform this experiment.
               </p>
             </div>
             <div class="col-md-12 my-auto">
@@ -335,7 +336,7 @@ We start with the training of wind turbines, because wind turbines are relativel
             this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images. 
             First, the software places a randomly chosen background image and then randomly generates 3D wind turbine models
             on top of the background image to create the 3D scene shown in the middle of the figure below. Next, the software moves a simulated camera 
-            in the overhead/bird's eye view and save these overhead images.
+            in the overhead/bird's eye view and saves these overhead images.
           </p>
         </div>
         <div class="col-md-12 my-auto">
