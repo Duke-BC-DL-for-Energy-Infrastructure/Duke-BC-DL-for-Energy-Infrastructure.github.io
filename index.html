@@ -262,7 +262,13 @@ We start with the training of wind turbines, because wind turbines are relativel
           <div class="row">
             <div class="col-md-12 my-auto">
               <p class="text-muted" style="text-align: justify;">
-                Below you can see an outline of the steps required to run these experiments. We'll talk about each of them in this section.
+                Below you can see a summary of the experiments we ran to explore whether adding synthetic imagery
+                improves the performance of an object detection model across geographic domains. We first need to collect 
+                real and synthetic imagery, and then we can create two datasets. One dataset contains purely real imagery, 
+                while the second contains the same real imagery, but we add in some synthetic images. We can train 
+                an object detection model on the first dataset, test its performance, and then do the same with the second 
+                dataset, and finally compare the two performances. In this section, we'll walk through each of the steps 
+                required to perform this experiment.
               </p>
             </div>
             <div class="col-md-12 my-auto">
@@ -274,7 +280,7 @@ We start with the training of wind turbines, because wind turbines are relativel
           <div class="row">
             <div class="col-md-12 my-auto">
               <p class="text-muted" style="text-align: justify;"> For our overhead imagery of wind turbines, we chose to sample them from
-                <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">NAIP</a>.
+                <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">the National Agriculture Imagery Program</a>.
                 This imagery covers a large part of the US and is very high resolution, making it great for our experiments.
                 We collected imagery in three different regions that we called Northwest, Northeast, and Eastern Midwest. We noticed
                 differences in the visual appearance of the background in the images collected in these three regions:
@@ -313,7 +319,8 @@ We start with the training of wind turbines, because wind turbines are relativel
               <p class="text-muted" style="text-align: justify;"> Below we can see the regions splits by which states they include,
                 as well as the number of images we collected for each region.
               </p>
-              <img src="img/methodology/Where Our Data is From.png" class="img-responsive" alt="" style="width:70%">
+              <img src="img/methodology/Where Our Data is From.png" class="img-responsive" alt="" style="width:70%"><br>
+              <caption><i>Figure: Map of the U.S. showing the U.S. states and number of images we collected in each region</i></caption>
             </div>
           </div>
         </div>
@@ -325,10 +332,10 @@ We start with the training of wind turbines, because wind turbines are relativel
         <div class="col-md-12 my-auto">
           <h2 class="service-heading">Creating Synthetic Imagery</h2>
           <p class="text-muted" style="text-align: left;"> To create synthetic imagery, we use a software called CityEngine. As inputs to
-            this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images
-            as seen on the right. First, a randomly chosen background image is placed, and then the turbine model is generated randomly
-            on top of the background image to create the 3D scene shown in the middle of the figure below. Next, a simulated camera is moved
-            to the overhead / bird's eye view, and then we can save and export this overhead synthetic image.
+            this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images. 
+            First, the software places a randomly chosen background image and then randomly generates 3D wind turbine models
+            on top of the background image to create the 3D scene shown in the middle of the figure below. Next, the software moves a simulated camera 
+            in the overhead/bird's eye view and save these overhead images.
           </p>
         </div>
         <div class="col-md-12 my-auto">
@@ -340,8 +347,9 @@ We start with the training of wind turbines, because wind turbines are relativel
       <div class="row">
         <div class="col-md-4 my-auto">
           <p class="text-muted" style="text-align: justify;"> We can repeat this process but remove the background images, and color
-            in the turbine models as black to retrieve information on where the turbine models are located. These black-and-white images can
-            then be used to generate formatted labels that we can use with our object detection model.
+            in the turbine models as black to retrieve information on where the turbine models are located. The black pixels in these
+            images can be automatically grouped together to locate the wind turbines and create a formatted label that contains the 
+            bounding box around each turbine model.
           </p>
         </div>
         <div class="col-md-8 my-auto">
@@ -353,14 +361,14 @@ We start with the training of wind turbines, because wind turbines are relativel
       <div class="row">
         <div class="col-md-12 my-auto">
           <p class="text-muted" style="text-align: justify;"> These synthetic images are simple, cheap, and fast to create. All we need are
-            background images, and the rest of the process of generating the images and the labels is done automatically, making this a great
-            alternative when we don't have enough real imagery or when it is time-consuming or expensive to collect. Below are some example
-            synthetic images with a variety of background images.
+            images for the background, and unlabeled imagery is far easier to acquire than labeled imagery. The rest of the process of generating the images and the labels is done automatically, making this a great
+            alternative when we do not have enough real imagery or when it is time-consuming or expensive to collect. Below are some example
+            synthetic images created from a variety of background images.
           </p>
         </div>
         <div class="col-md-12 my-auto">
           <img src="img/methodology/Example Synthetic Images.png" class="img-responsive" alt="" style="width:80%;"><br>
-          <caption class="text-muted"><i>Figure: Example synthetic images.</i></caption>
+          <caption class="text-muted"><i>Figure: Our synthetic images contain a variety of background images and camera angles. They look fairly similar to our real imagery.</i></caption>
         </div>
       </div>
       <br><br>
@@ -383,7 +391,7 @@ We start with the training of wind turbines, because wind turbines are relativel
           <h5 class="service-heading">Size of the Synthetic Turbines</h5>
           <p class="text-muted" style="text-align: left;"> The first consideration we have to make is what size to make the
             synthetic turbines. For this issue, we chose to model the size distribution of the synthetic turbines after the size
-            distribution of the real turbines. To do this, we created a histogram of the size of the turbines in our real imagery (see left),
+            distribution of the real turbines. We created a histogram of the size of the turbines in our real imagery,
             and modeled this in our synthetic imagery with multiple bins of uniform distributions.
           </p>
         </div>
@@ -393,10 +401,12 @@ We start with the training of wind turbines, because wind turbines are relativel
         <div class="col-md-6 my-auto">
           <h5 class="service-heading">Angle of the Camera</h5>
           <p class="text-muted" style="text-align: left;"> The next decision we had to make about the synthetic imagery design was
-            the angle of the simulated camera when we are capturing photos of the synthetic 3D scene. We noticed that in the real imagery,
-            some of the images were captured at an angle. This can be seen in the real images to the right, where we can see the pole of
-            the turbine due to the angle of the camera. We tried to incorporate this into our synthetic imagery, where we would pick
-            to either take the image from directly above or to have a randomly chosen camera angle between 60 and 90 degrees.
+            the angle of the simulated camera when we are capturing photos. We noticed that in the real imagery,
+            some of the images were captured at an angle. In the real overhead imagery, you can see the pole of
+            the turbine due to the angle of the camera. We observed that about half of the real images were taken from directly above (90 degrees), 
+            and the rest were taken at a variety of angles that were between 60-90 degrees. In our synthetic image generation process, we 
+            chose half of the time to take the image from directly above. The other half of the time, we would use a 
+            randomly chosen camera angle between 60 and 90 degrees.
           </p>
         </div>
         <div class="col-md-6 my-auto">
@@ -413,34 +423,15 @@ We start with the training of wind turbines, because wind turbines are relativel
         <div class="col-md-6 my-auto">
           <h5 class="service-heading">Which Background Images to Use</h5>
           <p class="text-muted" style="text-align: left;"> We also have to choose which background images to have placed under our
-            synthetic data. We chose to collect background imagery close to the real images in our testing set so that our synthetic
-            imagery would look as close as possible to the target data. We would not be able to do this if we were deploying the model,
-            since we wouldn't know our testing data, but we would be able to collect imagery from around the region as our background images.
-            However, using the background images close to our testing locations for these experiments allows us to search for an upper bound
-            on the performance increase that the synthetic data can provide, and can also tell us how important the background images are when
-            we are creating our synthetic images.
+            synthetic wind turbine models. We chose to collect background imagery close to the real images in our testing set so that our synthetic
+            imagery would look as close as possible to the target data. We may likely be able to collect unlabelled imagery from around the region we wish to test 
+            on for use as background images. Using the background images close to our testing locations allows us to estimate the potential performance 
+            increase that the synthetic data can provide without adding in confounding variables such as a mismatch between the synthetic background 
+            image domain and the target domain.
           </p>
         </div>
       </div>
-      <div class="row">
-        <h3 class="service-heading">Testing the Synthetic Imagery</h3>
-        <div class="col-md-12 my-auto">
-          <p class="text-muted" style="text-align: left;"> Now that we have some synthetic imagery, we want to test whether it can
-            help the performance of our object detection model when we deploying it on a new geography or when we lack training data.
-            To test this, we can train our model on two different training datasets. One contains purely real imagery, while the second
-            contains the same real imagery, but we add in a number of synthetic images. We then test the performance of both models and
-            compare the performances.
-          </p>
 
-        </div>
-        <!--<div class="col-md-12 my-auto">
-          <img src="img/methodology/Testing Synthetic Imagery.png" class="img-responsive" alt="" style="width:80%"> <br><br>
-          <p class="text-muted" style="text-align: left;"> Next, we will go into the process of constructing these two datasets and then discuss the
-            variety of experiments that we completed with the synthetic imagery.
-          </p>
-        </div>-->
-
-      </div>
       <hr class="divider light my-4" />
 
       <div class="row">
