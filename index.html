@@ -480,8 +480,8 @@ We start with the training of wind turbines, because wind turbines are relativel
           <p class="text-muted" style="text-align: justify;">
             Having clustered and sampled our data and found the optimal real to synthetic ratio, our final datasets for each region is: </p>
               <ul>
-                <li class="text-muted" style="text-align: justify;"><b>Baseline: </b> Train on 100 Real Non-Target Images, Validate on 100 Target Domain Images</li>
-                <li class="text-muted" style="text-align: justify;"><b>Modified: </b> Train on 100 Real Non-Target Images + 75 Syn Target Images, Validate on 100 Target Domain Images </li>
+                <li class="text-muted" style="text-align: justify;"><b>Baseline: </b> Train on 100 Real Non-Target Images, Test on 100 Target Domain Images</li>
+                <li class="text-muted" style="text-align: justify;"><b>Modified: </b> Train on 100 Real Non-Target Images + 75 Syn Target Images, Test on 100 Target Domain Images </li>
               </ul>
           </br>
 
@@ -492,9 +492,9 @@ We start with the training of wind turbines, because wind turbines are relativel
                 in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>,
                 that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic
                 imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence
-                of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we validate on the
+                of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we test on the
                 target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also
-                conducted within domain experiments, where we train and validate on the target domain, to establish baseline performance. </p>
+                conducted within domain experiments, where we train and test on the target domain, to establish baseline performance. </p>
              </div>
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%; height:100%">
@@ -506,7 +506,7 @@ We start with the training of wind turbines, because wind turbines are relativel
 
             <div class="col-md-6 my-auto">
              <p class="text-muted" style="text-align: justify;">
-               In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. To test the impact of each region, we run a 3-way pairwise experiment, where we train and validate on each of the 3 regions, resulting in 6 experiments. </p>
+               In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. To test the impact of each region, we run a 3-way pairwise experiment, where we train and test on each of the 3 regions, resulting in 6 experiments. </p>
             </div>
           </div>
 
@@ -522,7 +522,7 @@ We start with the training of wind turbines, because wind turbines are relativel
              <p class="text-muted" style="text-align: left;">
                Before we test how well synthetic imagery improves performance when the model is testing on a different domain than the one
                it was trained on, we need to establish some baseline to test if adding synthetic imagery improve our model accuracy. We need to know how well the model is doing when it is trained and
-               validated on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments,
+               tested on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments,
                and we repeat for the other domains/regions.</p>
           </div>
         </div>
@@ -538,7 +538,7 @@ We start with the training of wind turbines, because wind turbines are relativel
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Cross Domain Experiment (Target $\neq$ Source)</h5>
              <p class="text-muted" style="text-align: left;">
-               We are curious if synthetic data can help overcome differences in geography. To test whether adding synthetic imagery improve our model generalizability, we trained on one region, and validated
+               We are curious if synthetic data can help overcome differences in geography. To test whether adding synthetic imagery improve our model generalizability, we trained on one region, and tested
                on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline.
                Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain.
                We repeated for the other domains as well. </p>
@@ -644,12 +644,12 @@ We start with the training of wind turbines, because wind turbines are relativel
             <div class="col-md-6">
               <img src="img/results/NE-EM-baseline.png" class="img-responsive" alt="" style="width:80%">
               <br>
-              <caption><font size="2">Figure 5: Sample test image from the baseline experiment of training on Northeast and validating on Eastern Midwest. The model falsely predicted an architecture to the right as 3 wind turbines. </font></caption>
+              <caption><font size="2">Figure 5: Sample test image from the baseline experiment of training on Northeast and testing on Eastern Midwest. The model falsely predicted an architecture to the right as 3 wind turbines. </font></caption>
             </div>
             <div class="col-md-6">
               <img src="img/results/NE-EM-adding-synthetic.png" class="img-responsive" alt="" style="width:80%">
               <br>
-              <caption><font size="2">Figure 6: Sample test image from the adding synthetic experiment of training on Northeast and validating on Eastern Midwest. The adding synthetic prediction is able to achieve a higher precision. </font></caption>
+              <caption><font size="2">Figure 6: Sample test image from the adding synthetic experiment of training on Northeast and testing on Eastern Midwest. The adding synthetic prediction is able to achieve a higher precision. </font></caption>
               <br>
               <br>
             </div>
@@ -662,7 +662,7 @@ We start with the training of wind turbines, because wind turbines are relativel
               <p class="text-muted" style="text-align: justify;">
                 Here we will present a closer look into the results of training with real images from each of the 3 geographic regions respectively.
                 There is a disparity in performance when the model is trained with real images of different geographic domains. In particular, in
-                cross-domain experiments that validate on Eastern Midwest, the model perform generally worse than when valiating on other regions.
+                cross-domain experiments that test on Eastern Midwest, the model perform generally worse than when valiating on other regions.
                 Meanwhile, the model benefits the most from the addition of synthetic imagery if the baseline model does not perform comparatively
                 well, such as in the case of Eastern Midwest.
               </p>
@@ -698,7 +698,7 @@ We start with the training of wind turbines, because wind turbines are relativel
             </div>
             <div class="col-md-6">
                 <p class="text-muted" style="text-align: justify;">
-                  As shown above, the model performs consistently worse when validating on Eastern Midwest, yet that is when the model
+                  As shown above, the model performs consistently worse when testing on Eastern Midwest, yet that is when the model
                   has the greatest improvement in AP from the addition of synthetic imagery. </p>
                 <br>
                 <p class="text-muted" style="text-align: justify;">
