@@ -468,9 +468,9 @@
             <h5 class="service-heading">Clustering and Stratified Sampling</h5>
               <p class="text-muted" style="text-align: justify;">
                 Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets
-                to be representative of a given geographic region. To increase homogeneity within a region, we used DBSCAN (Density-based spatial clustering of applications with noise) for clustering
-                within each region and then stratified sample from each cluster to construct our 100:100 (train to test ratio) constrained
-                baseline datasets. Each point represents an image, and each color represents a cluster or strata. Points that are in the same cluster are more similar to each other than points that are in different stratas. </p>
+                to be representative of a given geographic region. To increase homogeneity within a region (we define a region as a "domain"), we clustered 
+                within each region and then performed stratified sampling from each cluster to construct our 1:1 train:validation ratio (1 training image for each validation image) constrained
+                baseline datasets, including 100 images total across the clusters within each domain. Each point represents an image, and each color represents a cluster. Points that are in the same cluster are more similar to each other than points that are in different clusters. </p>
           </div>
           <div class="col-md-12 my-auto">
             <p style="text-align:center;">
@@ -481,7 +481,7 @@
           </div>
         </div>
 
-          <h5 class="service-heading">Optimizing Real to Synthetic Ratio</h5>
+          <h5 class="service-heading">Optimizing the Ratio of Real to Synthetic Data</h5>
           <div class="row">
 
             <div class="col-md-6 my-auto">
@@ -490,10 +490,10 @@
 
             <div class="col-md-6 my-auto">
               <p class="text-muted" style="text-align: justify;">
-                In order to construct our baseline and adding synthetic datasets, we need to figure out what real to synthetic ratio yields
-                the largest gain in performance. If we add too much synthetic data, then we run the risk of overfitting to synthetic data. If we add too little, then it won't change performance significantly. To find this ratio, we designed the following experiment, where we test 1:0, 1:0.5, 1:0.75,
-                1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the largest performance
-                boost. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
+                To construct our baseline and add synthetic data, we need to figure out what ratio of real to synthetic data yields
+                the largest gain in performance (if any). If we add too much synthetic data, then we run the risk of overfitting to synthetic data. If we add too little synthetic data, then it will have little impact on performance. To find this ratio, we designed an experiment, where we test ratios of 1:0, 1:0.5, 1:0.75,
+                1:1, and 1:2 real to synthetic ratios. After conducting these experiments, we found that 1:0.75 yields the greatest performance
+                as measured by average precision. Therefore, we design our experiments using the 1:0.75 ratio.  </p>
              </div>
         </div>
 
@@ -513,25 +513,36 @@
           <h5 class="service-heading">Overview</h5>
           <div class="row">
             <div class="col-md-6 my-auto">
-              <p class="text-muted" style="text-align: justify;">The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially
-                in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>,
-                that is, the ability to perform well on images that are different from the images it was trained on. Our hypothesis is that synthetic
-                imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence
-                of synthetic data. To test our hypothesis, we designed cross-domain experiments, where we train on the source domain, but we test on the
-                target domain. To see the effects of synthetic imagery, we add synthetic imagery from the target domain in our modified datasets. We also
-                conducted within domain experiments, where we train and test on the target domain, to establish baseline performance. </p>
+              <p class="text-muted" style="text-align: justify;">In the context of our work, we define a <strong>domain</strong> as a geographic region, such as the US Pacific Northwest. A <strong>target domain</strong>  is where we aim to apply our model to, whereas a <strong>source domain</strong> is where the real training data comes from. 
+              
+              The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>,
+                that is, the ability to perform well on images that are different from the images it was trained on. One real-world application in energy access planning is a scenario where there is limited labeled real data in target locations where we want to deploy energy resources to. For this scenario, we design <strong>within-domain</strong> experiments, where the target domain remains the same geographic region as source domain. 
+                
+                A second and more challenging scenario is when there is no real data in the target locations where we want to deploy energy resources to. Because the target domain has no real data, we have to draw data from an alternative source domain. For this scenario, we design <strong>cross-domain</strong> experiments, where we train on a source domain but we test on a target domain. 
+                
+               </p>
              </div>
+           
             <div class="col-md-6 my-auto">
-              <img src="img/methodology/Overall Experimental Setup.png" class="img-responsive" alt="" style="width:100%; height:100%">
+              <img src="img/methodology/Overall Domain Map.png" class="img-responsive" class="center" alt="" style="width:100%">
+              <br>
+              <caption class="text-muted"><i>Figure: Overall Experiment Setup. In within-domain experiments, the target domain (Northwest) remains the same geographic region as the source domain (Northwest). In cross-domain experiments, the target domain (Northeast) has no labeled real data, so the model is trained on a different source domain (Northwest) and then applied to the target domain. Orange color denotes a source domain, whereas blue color denotes a target domain.</i></caption>
             </div>
-
+            </div>
+          
+          <div class="row">
            <div class="col-md-6 my-auto">
              <img src="img/methodology/Pairwise Cycle.png" class="img-responsive" alt="Pairwise Experiment Setup" style="width:100%">
+              <caption class="text-muted"><i>Figure: Pairwise experiment setup. The arrow tails point toward the source domain (where real training data comes from), whereas the arrow heads point toward the target domain (where the model will be tested on). Bi-directional arrows indicate each domain serves as the source for testing the other two domains, and in a separate experiment, the same domain serves as the target to be tested using model trained on the other domains. </i></caption>
             </div>
 
             <div class="col-md-6 my-auto">
+              <p class="text-muted" style="text-align: justify;"> Our hypothesis is that synthetic
+                imagery will help our model generalize to unseen domain - the model performance will improve when testing on a new geography in the presence
+                of synthetic data. We assume that training and testing on separate data, but from within the same domain, will perform better in general than training and testing on separate data from different domains. Note that although examples from continental US is shown here, in reality, a target domain is likely a less developed area without reliable access to electricity, and a source domain is likely a developed area with readily available data on energy infrastructures.  </p>
              <p class="text-muted" style="text-align: justify;">
-               In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. To test the impact of each region, we run a 3-way pairwise experiment, where we train and test on each of the 3 regions, resulting in 6 experiments. </p>
+               In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. To test the impact of each region, we run a 3-way pairwise experiment, where we train and test on each of the 3 regions, resulting in 6 experiments. For example, the Northeast region serves as the source domain for testing Northwest and Eastern Midwest. Then in a different experiment, a model trained using Eastern Midwest is tested on Northeast, and in another experiment, a model trained on Northwest is tested on Northeast. </p>
+              
             </div>
           </div>
 
@@ -540,13 +551,13 @@
           <div class="row">
             <div class="col-md-6 my-auto">
             <img src="img/methodology/Within Domain Experiment.png" class="img-responsive" alt="" style="width:100%">
-           <caption class="text-muted"><i>Figure: Within-domain experiment example using Northwest as target domain.</i></caption>
+           <caption class="text-muted"><i>Figure: <strong>Within-domain</strong> experiment example using Northwest as target domain.</i></caption>
             </div>
           <div class="col-md-6 my-auto">
             <h5 class="service-heading">Within Domain Experiment (Target = Source)</h5>
              <p class="text-muted" style="text-align: left;">
                Before we test how well synthetic imagery improves performance when the model is testing on a different domain than the one
-               it was trained on, we need to establish some baseline to test if adding synthetic imagery improve our model accuracy. We need to know how well the model is doing when it is trained and
+               it was trained on, we need to establish some baseline performance results for detecting wind turbines in the imagery to evaluate whether adding synthetic imagery improves our model's accuracy. We need to know how well the model is doing when it is trained and
                tested on the same domain. Using Northwest region as our target domain, we ran our baseline and modified experiments,
                and we repeat for the other domains/regions.</p>
           </div>
@@ -558,13 +569,13 @@
           <div class="row">
             <div class="col-md-6 my-auto">
             <img src="img/methodology/Cross Domain Experiment.png" class="img-responsive" alt="" style="width:100%">
-           <caption class="text-muted"><i>Figure: Cross-domain experiment example using Northwest as target domain and Eastern Midwest as non-target domain.</i></caption>
+           <caption class="text-muted"><i>Figure: <strong>Cross-domain</strong> experiment example using Northwest as target domain and Eastern Midwest as non-target domain.</i></caption>
             </div>
           <div class="col-md-6 my-auto">
-            <h5 class="service-heading">Cross Domain Experiment (Target $\neq$ Source)</h5>
+            <h5 class="service-heading">Cross Domain Experiment (Target not equal to Source)</h5>
              <p class="text-muted" style="text-align: left;">
-               We are curious if synthetic data can help overcome differences in geography. To test whether adding synthetic imagery improve our model generalizability, we trained on one region, and tested
-               on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline.
+               These experiments are designed to test if synthetic data can help overcome differences in geography. To test whether adding synthetic imagery improves our model's generalizability, we trained on one region, and tested
+               on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline. Augmenting our baseline dataset with synthetic data not only provides more exmaples of images with wind turbines, but it provides examples that are more similar to the target locations the model will be deployed to. Thus, we expect adding synthetic data to improve our model's generalizability. 
                Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain.
                We repeated for the other domains as well. </p>
           </div>
