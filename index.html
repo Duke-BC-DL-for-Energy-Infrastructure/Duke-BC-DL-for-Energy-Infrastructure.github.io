@@ -784,26 +784,35 @@
                   Apply these techniques to <strong>detect other types of energy infrastructure</strong>. Because high voltage transmission towers are
                   similar structure to wind turbines, we can easily adapt our synthetic image generation process for transmission towers. We could then
                   test this synthetic imagery in the same manner as what we performed for the synthetic imagery of wind turbines, and see if this method
-                  extends to this other energy infrastructure.
+                  extends to this other types of energy infrastructure.
                 </li>
                 <br>
                   <div class="figure-img">
-                    <img src="img/future_work/High_voltage_transmission_towers_and_lines.jpg" class="img-responsive" alt="" title="Img Source: https://upload.wikimedia.org/wikipedia/commons/b/b4/High_voltage_transmission_towers_and_lines.jpg" style="width:50%">
+                    <img src="img/future_work/energyinfrastructure.png" class="img-responsive" alt="" style="width:100%">
+                    <br>
+                    <caption><i>Links to Image Sources (Pixabay): <a href="https://pixabay.com/images/id-3196696/">Substation</a>,
+                      <a href="https://pixabay.com/images/id-1868352/">Transmission Tower</a>,
+                      <a href="https://pixabay.com/images/id-2138992/">Solar Panels</a></i></caption>
                   </div>
                 <br>
                 <li>
-                  Try few shot learning, where we use <strong>small amounts of real images and large amounts of synthetic data</strong> to adapt our object detection
+                  Investigate few shot learning, where we use <strong>small amounts of real images and large amounts of synthetic data</strong> to adapt our object detection
                   model to any region that we choose.
                 </li>
                 <br>
                 <div class="figure-img">
-                    <img src="img/future_work/Few Shot Learning.png" class="img-responsive" alt="" title="Source: https://deepai.org/publication/a-new-benchmark-for-evaluation-of-cross-domain-few-shot-learning" style="width:100%">
+                    <img src="img/future_work/Few Shot Learning.png" class="img-responsive" alt="" style="width:100%">
+                    <br>
+                    <caption><i>Figure: Guo, Y., Codella, N., Karlinsky, L., Smith, J., Simunic, T., & Feris, R. (2019). A New Benchmark for Evaluation of Cross-Domain Few-Shot Learning. ArXiv, abs/1912.07200. </i></caption>
                 </div>
                 <br>
                 <li>
                   We would also like to explore <strong>more methods of generating synthetic data</strong>. One method in particular would be using
                   generative adversarial networks (GANs) to generate synthetic imagery with deep learning. This could look more realistic
-                  than the current synthetic imagery, since the synthetic image generation process would learn from the real imagery we have.
+                  than the current synthetic imagery, since the synthetic image generation process would learn from the real imagery we have. This could
+                  enable incorporating the context of the energy infrastructure more accurately. For example, in our current image generation strategy,
+                  we place the wind turbines randomly within the image. This could be on top of a forest or in a car park rather than where we typically
+                  find them: in a clearing with an access road nearby.
                 </li>
               </ol>
             </div>
