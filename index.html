@@ -598,7 +598,7 @@
               <h3>Performance Metrics</h3>
               <p class="text-muted" style="text-align: justify;">
                 To understand our results, it's important that we first understand the metrics that we have chosen to measure
-                performance. The primary metrics we will use is Average Precision for an IoU threshold of 0.5 (AP@0.5). We will explain
+                performance. The primary metrics we will use is Average Precision. We will explain
                 the implication of this metric starting with the images on the left.</p>
               <ul>
                 <li class="text-muted" style="text-align: justify;"><b>Precision: </b> Out of the objects that the model classified as a wind turbine,
@@ -640,9 +640,7 @@
                 <div class = "col-md-6">
                   <h3>Reducing Variance</h3>
                   <p class="text-muted" style="text-align: justify;">
-                    Due to randomness in machine learning, there will be slight variations between the results of each run, as shown on the left image.
-                    Each experiment is therefore repeated 4 times to account for this randomness and improve the accuracy of the result. The average AP
-                    value is calculated and used to compare results of our baseline model and model with added synthetic images.</p>
+                  Due to variability in the object detection model’s training process, there will be variations between the results of each run, as shown on the left image. Each experiment is therefore repeated 4 times to account for this randomness and improve the accuracy of the result. The average AP value is calculated and used to compare results of our baseline model and model with added synthetic images.</p>
                 </div>
           <br>
           <hr class="divider light my-4" />
@@ -661,7 +659,7 @@
             <div class="col-md-12 my-auto">
               <img src="img/results/overall-results-table.png" class="img-responsive" alt="" style="width:70%">
               <br>
-              <caption><font size="2">Figure 4: All values are in AP@0.5. </font></caption>
+              <caption><font size="2">Figure 4: All values are in average precision (AP). </font></caption>
             </div>
           </div>
           <br>
@@ -687,9 +685,7 @@
               <p class="text-muted" style="text-align: justify;">
                 Here we will present a closer look into the results of training with real images from each of the 3 geographic regions respectively.
                 There is a disparity in performance when the model is trained with real images of different geographic domains. In particular, in
-                cross-domain experiments that test on Eastern Midwest, the model perform generally worse than when valiating on other regions.
-                Meanwhile, the model benefits the most from the addition of synthetic imagery if the baseline model does not perform comparatively
-                well, such as in the case of Eastern Midwest.
+                cross-domain experiments that test on Eastern Midwest, the model performs generally worse than when testing on other regions.
               </p>
             </div>
           </div>
@@ -719,17 +715,12 @@
             <div class="col-md-6 my-auto">
                 <img src="img/results/results-EM.png" class="img-responsive" alt="" style="width:100%">
                 <img src="img/results/results-EM-table.png" class="img-responsive" alt="" style="width:100%">
-                <caption><i>Figure 9: Results of training with real images from Eastern Midwest</i></caption>
+                <caption><font size="2">Figure 9: Results of training with real images from Eastern Midwest</font></caption>
             </div>
             <div class="col-md-6">
                 <p class="text-muted" style="text-align: justify;">
-                  As shown above, the model performs consistently worse when testing on Eastern Midwest, yet that is when the model
-                  has the greatest improvement in AP from the addition of synthetic imagery. </p>
-                <br>
-                <p class="text-muted" style="text-align: justify;">
-                  One explanation for the disparity from performance in Eastern Midwest is the wide diversity of geographic backgrounds
-                  presented in the region's dataset. The exact model performance and improvement synthetic images can make depend on geographic
-                  regions. Regions with diverse backgrounds may limit the model's performance. </p>
+                  As shown on the left and above, the model performs consistently worse when testing on Eastern Midwest, yet Eastern Midwest is also the region where the model
+                  has the greatest average improvement in average precision from the addition of synthetic imagery. The exact model performance and improvement synthetic images can make hence depend on the details of specific geographic regions. <br><br> It is therefore possibly more challenging for the model to perform well in certain settings, such as when there are different designs of wind turbines in a region or when the region has more diverse geographic backgrounds. Despite these challenges, synthetic imagery was able to help bridge the gap and bring significant improvement to model performance. </p>
             </div>
           </div>
   </section>
