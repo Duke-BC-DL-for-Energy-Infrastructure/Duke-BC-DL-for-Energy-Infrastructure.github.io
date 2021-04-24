@@ -142,7 +142,7 @@
         <div class="row">
 
           <div class="col-md-6">
-          <img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt="" style="width:90%">
+          <img src="img/motivation/object detection explanation.jpeg" class="img-responsive" alt="" style="width:100%">
           <caption><i>Image from: <a href="https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b">
             You only look once, or YOLO</a></i></caption>
           </div>
@@ -191,23 +191,24 @@
 			  <h3 class="service-heading">Challenges with Object Detection</h3>
 
 			  <div class="row">
-  			  <div class="col-md-6">
+  			  <div class="col-md-12">
               <h4>Problem 1: Lack of labeled data for rare objects</h4>
-              <p class="text-muted" style="text-align: justify;"> Object detection networks, like the one used in this work, are
-                notorious for their "data hunger," requiring <strong>large amounts of annotated training data to perform well</strong>.
-                For common infrastructure like buildings and roads, there is ample real-world data available to train such models.
-                However, energy infrastructure is <strong>rare</strong> both in number and density, so collecting and annotating large
-                amounts of satellite images manually is <strong>expensive</strong> and time consuming.
+              <p class="text-muted" style="text-align: justify;">
+                Object detection networks, like the one used in this work, are notorious for their "data hunger," requiring
+                <strong>large amounts of annotated training data to perform well</strong>. For common infrastructure like buildings
+                and roads, there is ample real-world data available to train such models. However, energy infrastructure is
+                <strong>rare</strong> both in number and density, so collecting and annotating large amounts of satellite images
+                manually is <strong>expensive</strong> and time consuming.
               </p>
           </div>
 
-          <div class="col-md-6">
+          <!--<div class="col-md-6">
               <img src="img/motivation/wind_turbines_rarity.png" class="img-responsive" alt=""style="width:80%; height:80%">
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row">-->
+          <div class="col-md-12">
             <h4>Problem 2: Domain adaptation</h4>
             <p class="text-muted" style="text-align: justify;">
               Typically our labeled training data are not from the same location as where we want to apply these techniques. However, object
@@ -217,7 +218,7 @@
             </p>
           </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
           <img src="img/motivation/domain_adaptation_updated.png" class="img-responsive" alt=""style="width:80%; height:80%">
           </div>
         </div>
@@ -356,7 +357,7 @@
       <div class="row">
         <div class="col-md-12 my-auto">
           <h2 class="service-heading">Creating Synthetic Imagery</h2>
-          <p class="text-muted" style="text-align: left;"> To create synthetic imagery, we use a software called CityEngine. As inputs to
+          <p class="text-muted" style="text-align: justify;"> To create synthetic imagery, we use a software called CityEngine. As inputs to
             this process, we need a list of background images that do not contain any wind turbines and a 3D model of a wind turbine. We then can automatically generate synthetic images.
             First, the software places a randomly chosen background image and then randomly generates 3D wind turbine models
             on top of the background image to create the 3D scene shown in the middle of the figure below. Next, the software moves a simulated camera
@@ -414,7 +415,7 @@
         </div>
         <div class="col-md-6 my-auto">
           <h5 class="service-heading">Size of the Synthetic Turbines</h5>
-          <p class="text-muted" style="text-align: left;"> The first consideration we have to make is what size to make the
+          <p class="text-muted" style="text-align: justify;"> The first consideration we have to make is what size to make the
             synthetic turbines. For this issue, we chose to model the size distribution of the synthetic turbines after the size
             distribution of the real turbines. We created a histogram of the size of the turbines in our real imagery,
             and modeled this in our synthetic imagery with multiple bins of uniform distributions.
@@ -425,7 +426,7 @@
       <div class="row">
         <div class="col-md-6 my-auto">
           <h5 class="service-heading">Angle of the Camera</h5>
-          <p class="text-muted" style="text-align: left;"> The next decision we had to make about the synthetic imagery design was
+          <p class="text-muted" style="text-align: justify;"> The next decision we had to make about the synthetic imagery design was
             the angle of the simulated camera when we are capturing photos. We noticed that in the real imagery,
             some of the images were captured at an angle. In the real overhead imagery, you can see the pole of
             the turbine due to the angle of the camera. We observed that about half of the real images were taken from directly above (90 degrees),
@@ -447,7 +448,7 @@
         </div>
         <div class="col-md-6 my-auto">
           <h5 class="service-heading">Which Background Images to Use</h5>
-          <p class="text-muted" style="text-align: left;"> We also have to choose which background images to have placed under our
+          <p class="text-muted" style="text-align: justify;"> We also have to choose which background images to have placed under our
             synthetic wind turbine models. We chose to collect background imagery close to the real images in our testing set so that our synthetic
             imagery would look as close as possible to the target data. We may likely be able to collect unlabelled imagery from around the region we wish to test
             on for use as background images. Using the background images close to our testing locations allows us to estimate the potential performance
@@ -468,7 +469,7 @@
             <h5 class="service-heading">Clustering and Stratified Sampling</h5>
               <p class="text-muted" style="text-align: justify;">
                 Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets
-                to be representative of a given geographic region. To increase homogeneity within a region (we define a region as a "domain"), we clustered 
+                to be representative of a given geographic region. To increase homogeneity within a region (we define a region as a "domain"), we clustered
                 within each region and then performed stratified sampling from each cluster to construct our 1:1 train:validation ratio (1 training image for each validation image) constrained
                 baseline datasets, including 100 images total across the clusters within each domain. Each point represents an image, and each color represents a cluster. Points that are in the same cluster are more similar to each other than points that are in different clusters. </p>
           </div>
@@ -513,23 +514,23 @@
           <h5 class="service-heading">Overview</h5>
           <div class="row">
             <div class="col-md-6 my-auto">
-              <p class="text-muted" style="text-align: justify;">In the context of our work, we define a <strong>domain</strong> as a geographic region, such as the US Pacific Northwest. A <strong>target domain</strong>  is where we aim to apply our model to, whereas a <strong>source domain</strong> is where the real training data comes from. 
-              
+              <p class="text-muted" style="text-align: justify;">In the context of our work, we define a <strong>domain</strong> as a geographic region, such as the US Pacific Northwest. A <strong>target domain</strong>  is where we aim to apply our model to, whereas a <strong>source domain</strong> is where the real training data comes from.
+
               The long-term goal of our project is to apply our object detection model to a variety of unseen domains around the world, especially in developing areas where information on energy infrastructure is hard to obtain. This requires our model to be able to <strong>generalizable</strong>,
-                that is, the ability to perform well on images that are different from the images it was trained on. One real-world application in energy access planning is a scenario where there is limited labeled real data in target locations where we want to deploy energy resources to. For this scenario, we design <strong>within-domain</strong> experiments, where the target domain remains the same geographic region as source domain. 
-                
-                A second and more challenging scenario is when there is no real data in the target locations where we want to deploy energy resources to. Because the target domain has no real data, we have to draw data from an alternative source domain. For this scenario, we design <strong>cross-domain</strong> experiments, where we train on a source domain but we test on a target domain. 
-                
+                that is, the ability to perform well on images that are different from the images it was trained on. One real-world application in energy access planning is a scenario where there is limited labeled real data in target locations where we want to deploy energy resources to. For this scenario, we design <strong>within-domain</strong> experiments, where the target domain remains the same geographic region as source domain.
+
+                A second and more challenging scenario is when there is no real data in the target locations where we want to deploy energy resources to. Because the target domain has no real data, we have to draw data from an alternative source domain. For this scenario, we design <strong>cross-domain</strong> experiments, where we train on a source domain but we test on a target domain.
+
                </p>
              </div>
-           
+
             <div class="col-md-6 my-auto">
               <img src="img/methodology/Overall Domain Map.png" class="img-responsive" class="center" alt="" style="width:100%; height:150%">
               <br>
               <caption class="text-muted"><i>Figure: Overall Experiment Setup. In within-domain experiments, the target domain (Northwest) remains the same geographic region as the source domain (Northwest). In cross-domain experiments, the target domain (Northeast) has no labeled real data, so the model is trained on a different source domain (Northwest) and then applied to the target domain. Orange color denotes a source domain, whereas blue color denotes a target domain.</i></caption>
             </div>
             </div>
-          
+
           <div class="row">
            <div class="col-md-6 my-auto">
              <img src="img/methodology/Pairwise Cycle.png" class="img-responsive" alt="Pairwise Experiment Setup" style="width:100%">
@@ -542,7 +543,7 @@
                 of synthetic data. We assume that training and testing on separate data, but from within the same domain, will perform better in general than training and testing on separate data from different domains. Note that although examples from continental US is shown here, in reality, a target domain is likely a less developed area without reliable access to electricity, and a source domain is likely a developed area with readily available data on energy infrastructures.  </p>
              <p class="text-muted" style="text-align: justify;">
                In our case, each domain is a geographic region that we defined. Namely, Northwest, Northeast, and Eastern Midwest. To test the impact of each region, we run a 3-way pairwise experiment, where we train and test on each of the 3 regions, resulting in 6 experiments. For example, the Northeast region serves as the source domain for testing Northwest and Eastern Midwest. Then in a different experiment, a model trained using Eastern Midwest is tested on Northeast, and in another experiment, a model trained on Northwest is tested on Northeast. </p>
-              
+
             </div>
           </div>
 
@@ -575,7 +576,7 @@
             <h5 class="service-heading">Cross Domain Experiment (Target not equal to Source)</h5>
              <p class="text-muted" style="text-align: left;">
                These experiments are designed to test if synthetic data can help overcome differences in geography. To test whether adding synthetic imagery improves our model's generalizability, we trained on one region, and tested
-               on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline. Augmenting our baseline dataset with synthetic data not only provides more exmaples of images with wind turbines, but it provides examples that are more similar to the target locations the model will be deployed to. Thus, we expect adding synthetic data to improve our model's generalizability. 
+               on another region (cross-domain). Then we added synthetic imagery similar to the target domain and compared performance against the baseline. Augmenting our baseline dataset with synthetic data not only provides more exmaples of images with wind turbines, but it provides examples that are more similar to the target locations the model will be deployed to. Thus, we expect adding synthetic data to improve our model's generalizability.
                Here we demonstrate this experiment setup using Northwest as the target domain and Eastern Midwest as the non-target domain.
                We repeated for the other domains as well. </p>
           </div>
