@@ -472,7 +472,7 @@
               <p class="text-muted" style="text-align: justify;">
                 Because our self-defined geographic regions are wide and diverse, it's important for our training and testing datasets
                 to be representative of a given geographic region. To increase homogeneity within a region (we define a region as a "domain"), we clustered
-                within each region and then performed stratified sampling from each cluster to construct our 1:1 train:validation ratio (1 training image for each validation image) constrained
+                within each region and then performed stratified sampling from each cluster with proportional allocation to construct our 1:1 train:validation ratio (1 training image for each validation image) constrained
                 baseline datasets, including 100 images total across the clusters within each domain. Each point represents an image, and each color represents a cluster. Points that are in the same cluster are more similar to each other than points that are in different clusters. </p>
           </div>
           <div class="col-md-12 my-auto">
@@ -480,7 +480,7 @@
             <img src="img/methodology/Clustering and Stratified Sampling.png" class="img-responsive" alt="" class="center" style="width:80%; height:70%">
             </p>
             <br>
-            <caption class="text-muted"><i>Figure: DBSCAN clustering within each geographic region and then stratified random sampling from each cluster to construct our training and testing datasets. Each dot represents a real imge, and each color represents a different strata or cluster. Because our training and testing datasets contain 100 images each, and there are 4 clusters within the Northeast region shown here, we randomly sample 25 images from each cluster for our train data, and a different set of 25 images from each cluster for our test data. </i></caption>
+            <caption class="text-muted"><i>Figure: DBSCAN clustering within each geographic region and then stratified random sampling from each cluster to construct our training and testing datasets. Each dot represents a real imge, and each color represents a different cluster. For each cluster, the sample size is proportional to the cluster size, so larger clusters will have more images in both training and testing data. </i></caption>
           </div>
         </div>
 
