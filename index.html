@@ -206,8 +206,8 @@
               <img src="img/motivation/wind_turbines_rarity.png" class="img-responsive" alt=""style="width:80%; height:80%">
           </div>
         </div>
-
         <div class="row">-->
+
           <div class="col-md-12">
             <h4>Problem 2: Domain adaptation</h4>
             <p class="text-muted" style="text-align: justify;">
@@ -219,7 +219,9 @@
           </div>
 
         <div class="col-md-12">
-          <img src="img/motivation/domain_adaptation_updated.png" class="img-responsive" alt=""style="width:80%; height:80%">
+          <img src="img/motivation/domain_adaptation_updated.png" class="img-responsive" alt=""style="width:90%; height:90%"><br>
+          <caption><i>Example of the domain adaptation challenge, for a model trained on images with geographical features of the images in the
+          source domain (forest & grasslands) that underperforms when tested on images with different background in the target domain (desert)</i></caption>
           </div>
         </div>
     </div>
@@ -232,15 +234,14 @@
             <p class="text-muted" style="text-align: justify;">
               Since training data are difficult to collect, in this project we explore creating synthetic data to supplement the real data
               that are available. We do this by taking a real image without any energy infrastructure present and introducing a 3D model of
-              an object of interest on top of that image as seen in the figure below. To add these 3D models to real images we use CityEngine,
-              which can render and generate 3D landscapes and structures based on input from the designer. In our case, we populate a landscape
-              with synthetic wind turbines. Then we position the camera in the overhead position and capture images in a manner that mimics
-              the appearance of overhead imagery. Knowing where we placed the wind turbines in the synthetic image, we also generate ground
-              truth labels for each of these images.
+              an object of interest on top of that image as seen in the figure below. Then we position the camera in the overhead position
+              and capture images in a manner that mimics the appearance of overhead imagery. Knowing where we placed the wind turbines in
+              the synthetic image, we also generate ground truth labels for each of these images.
             </p>
         </div>
         <div class="col-md-12">
-          <img src="img/motivation/synthetic imagery.png" class="img-responsive" alt=""style="width:90%; height:90%">
+          <img src="img/motivation/synthetic imagery.png" class="img-responsive" alt=""style="width:90%; height:90%"><br>
+          <caption><i>Synthetic imagery generation process overview</i></caption>
         </div>
       </div>
     </div>
@@ -248,8 +249,8 @@
 
 
 
-      <div class="row text-center">
-        <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
           <h3 class="service-heading">Previous work</h3>
           <p class="text-muted" style="text-align: justify;">
             For five years, the Duke Energy Data Analytics Lab has worked on developing deep learning models that identify energy infrastructure,
@@ -267,10 +268,10 @@
             in new, diverse locations.
           </p>
         </div>
-        <div class="col-md-6">
+        <!--<div class="col-md-6">
           <img src="img/overview_OLD/energy_information.png" class="img-responsive center" alt=""
           style="width:100%">
-        </div>
+        </div>-->
       </div>
 
 
